@@ -1,0 +1,9 @@
+[ {
+  "buildOrder" : 1,
+  "reportUrl" : "https://Dorgham4.github.io/io.github.alidorgham/allure/1/",
+  "reportName" : "Allure Report with history",
+  "data" : {
+    "Product defects" : 6,
+    "Test defects" : 1
+  }
+} ]
