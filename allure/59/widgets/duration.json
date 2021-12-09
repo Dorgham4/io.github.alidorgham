@@ -1,0 +1,281 @@
+[ {
+  "uid" : "e508b16f698ce212",
+  "name" : "beforeClass",
+  "time" : {
+    "start" : 1639054269866,
+    "stop" : 1639054269868,
+    "duration" : 2
+  },
+  "status" : "failed",
+  "severity" : "normal"
+}, {
+  "uid" : "452dfcecd6ce171d",
+  "name" : "navigateToGoogleHomeAndAssertPageTitle",
+  "time" : {
+    "start" : 1639054269966,
+    "stop" : 1639054269970,
+    "duration" : 4
+  },
+  "status" : "skipped",
+  "severity" : "normal"
+}, {
+  "uid" : "aa718b264e5d88bc",
+  "name" : "searchForQueryAndAssertFirstResultTextIsCorrect",
+  "time" : {
+    "start" : 1639054269915,
+    "stop" : 1639054269918,
+    "duration" : 3
+  },
+  "status" : "skipped",
+  "severity" : "normal"
+}, {
+  "uid" : "7e5d4967af6c5ab8",
+  "name" : "navigateToGoogleHomeAndAssertPageTitle",
+  "time" : {
+    "start" : 1639054269833,
+    "stop" : 1639054269837,
+    "duration" : 4
+  },
+  "status" : "skipped",
+  "severity" : "normal"
+}, {
+  "uid" : "e00480b409ffae47",
+  "name" : "navigateToGoogleHomeAndAssertGoogleLogoIsDisplayed",
+  "time" : {
+    "start" : 1639054269960,
+    "stop" : 1639054269963,
+    "duration" : 3
+  },
+  "status" : "skipped",
+  "severity" : "normal"
+}, {
+  "uid" : "f1660251704598d7",
+  "name" : "navigateToGoogleHomeAndAssertPageTitle",
+  "time" : {
+    "start" : 1639054269943,
+    "stop" : 1639054269945,
+    "duration" : 2
+  },
+  "status" : "skipped",
+  "severity" : "normal"
+}, {
+  "uid" : "6db55104ac391952",
+  "name" : "searchForQueryAndAssertFirstResultTextIsCorrect",
+  "time" : {
+    "start" : 1639054269949,
+    "stop" : 1639054269951,
+    "duration" : 2
+  },
+  "status" : "skipped",
+  "severity" : "normal"
+}, {
+  "uid" : "1008f14caef52785",
+  "name" : "searchForQueryAndAssertFirstResultTextIsCorrect",
+  "time" : {
+    "start" : 1639054269973,
+    "stop" : 1639054269975,
+    "duration" : 2
+  },
+  "status" : "skipped",
+  "severity" : "normal"
+}, {
+  "uid" : "afb19346b643a46c",
+  "name" : "validateUserEmail",
+  "time" : {
+    "start" : 1639054226539,
+    "stop" : 1639054230249,
+    "duration" : 3710
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "daec33128c3b1907",
+  "name" : "navigateToGoogleHomeAndAssertGoogleLogoIsDisplayed",
+  "time" : {
+    "start" : 1639054234146,
+    "stop" : 1639054234879,
+    "duration" : 733
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "482f1e4859419efc",
+  "name" : "beforeMethod",
+  "time" : {
+    "start" : 1639054269819,
+    "stop" : 1639054269819,
+    "duration" : 0
+  },
+  "status" : "broken",
+  "severity" : "normal"
+}, {
+  "uid" : "de67f5217cf30472",
+  "name" : "navigateToGoogleHomeAndAssertPageTitle",
+  "time" : {
+    "start" : 1639054237101,
+    "stop" : 1639054237740,
+    "duration" : 639
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "f92735a86b6192f1",
+  "name" : "searchForQueryAndAssertFirstResultTextIsCorrect",
+  "time" : {
+    "start" : 1639054269857,
+    "stop" : 1639054269858,
+    "duration" : 1
+  },
+  "status" : "skipped",
+  "severity" : "normal"
+}, {
+  "uid" : "5bc9a9153034172c",
+  "name" : "navigateToGoogleHomeAndAssertGoogleLogoIsDisplayed",
+  "time" : {
+    "start" : 1639054269903,
+    "stop" : 1639054269905,
+    "duration" : 2
+  },
+  "status" : "skipped",
+  "severity" : "normal"
+}, {
+  "uid" : "5ca605091af870eb",
+  "name" : "navigateToGoogleHomeAndAssertPageTitle",
+  "time" : {
+    "start" : 1639054246912,
+    "stop" : 1639054246966,
+    "duration" : 54
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "9115a89b34bbdeba",
+  "name" : "sampleTestCase",
+  "time" : {
+    "start" : 1639054269978,
+    "stop" : 1639054269990,
+    "duration" : 12
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "e7d6a308024a1beb",
+  "name" : "navigateToGoogleHomeAndAssertGoogleLogoIsDisplayed",
+  "time" : {
+    "start" : 1639054269870,
+    "stop" : 1639054269870,
+    "duration" : 0
+  },
+  "status" : "skipped",
+  "severity" : "normal"
+}, {
+  "uid" : "3c924e99f8006a07",
+  "name" : "navigateToGoogleHomeAndAssertPageTitle",
+  "time" : {
+    "start" : 1639054269872,
+    "stop" : 1639054269873,
+    "duration" : 1
+  },
+  "status" : "skipped",
+  "severity" : "normal"
+}, {
+  "uid" : "696d4cdf4892268b",
+  "name" : "navigateToGoogleHomeAndAssertGoogleLogoIsDisplayed",
+  "time" : {
+    "start" : 1639054269927,
+    "stop" : 1639054269939,
+    "duration" : 12
+  },
+  "status" : "skipped",
+  "severity" : "normal"
+}, {
+  "uid" : "2c626a9955bf8124",
+  "name" : "navigateToGoogleHomeAndAssertPageTitle",
+  "time" : {
+    "start" : 1639054269910,
+    "stop" : 1639054269912,
+    "duration" : 2
+  },
+  "status" : "skipped",
+  "severity" : "normal"
+}, {
+  "uid" : "a2b49d63190d5040",
+  "name" : "searchForQueryAndAssertFirstResultTextIsCorrect",
+  "time" : {
+    "start" : 1639054239774,
+    "stop" : 1639054242795,
+    "duration" : 3021
+  },
+  "status" : "failed",
+  "severity" : "normal"
+}, {
+  "uid" : "eb519c42f41b5639",
+  "name" : "searchForQueryAndAssertFirstResultTextIsCorrect",
+  "time" : {
+    "start" : 1639054269881,
+    "stop" : 1639054269881,
+    "duration" : 0
+  },
+  "status" : "skipped",
+  "severity" : "normal"
+}, {
+  "uid" : "8188e80f700a2224",
+  "name" : "searchForQueryAndAssertFirstResultTextIsCorrect",
+  "time" : {
+    "start" : 1639054248678,
+    "stop" : 1639054250740,
+    "duration" : 2062
+  },
+  "status" : "failed",
+  "severity" : "normal"
+}, {
+  "uid" : "9c7276d12a58e2ac",
+  "name" : "beforeClass",
+  "time" : {
+    "start" : 1639054269924,
+    "stop" : 1639054269924,
+    "duration" : 0
+  },
+  "status" : "failed",
+  "severity" : "normal"
+}, {
+  "uid" : "8ac5b87f394a9d25",
+  "name" : "beforeClass",
+  "time" : {
+    "start" : 1639054269957,
+    "stop" : 1639054269957,
+    "duration" : 0
+  },
+  "status" : "failed",
+  "severity" : "normal"
+}, {
+  "uid" : "397e48785a1ec5a1",
+  "name" : "beforeClass",
+  "time" : {
+    "start" : 1639054269889,
+    "stop" : 1639054269889,
+    "duration" : 0
+  },
+  "status" : "failed",
+  "severity" : "normal"
+}, {
+  "uid" : "417550f4f2490fc5",
+  "name" : "navigateToGoogleHomeAndAssertGoogleLogoIsDisplayed",
+  "time" : {
+    "start" : 1639054244946,
+    "stop" : 1639054245072,
+    "duration" : 126
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "32473f809362faa1",
+  "name" : "navigateToGoogleHomeAndAssertGoogleLogoIsDisplayed",
+  "time" : {
+    "start" : 1639054269822,
+    "stop" : 1639054269823,
+    "duration" : 1
+  },
+  "status" : "skipped",
+  "severity" : "normal"
+} ]
