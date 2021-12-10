@@ -1,0 +1,454 @@
+{
+  "uid" : "7cc822c783a8022a",
+  "name" : "sampleTestCase",
+  "fullName" : "tests.cli.demo.cliTest.sampleTestCase",
+  "historyId" : "eea1882afc28f6537fff1cddb4dc325",
+  "time" : {
+    "start" : 1639118378857,
+    "stop" : 1639118378892,
+    "duration" : 35
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "setupActivities",
+    "time" : {
+      "start" : 1639118333760,
+      "stop" : 1639118334543,
+      "duration" : 783
+    },
+    "description" : "",
+    "status" : "passed",
+    "steps" : [ {
+      "name" : "Folder [extent-reports] was not found, it may have already been deleted.",
+      "time" : {
+        "start" : 1639118333947,
+        "stop" : 1639118333949,
+        "duration" : 2
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "actionCounter",
+        "value" : "1"
+      }, {
+        "name" : "logText",
+        "value" : "Folder [extent-reports] was not found, it may have already been deleted."
+      } ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    } ],
+    "attachments" : [ {
+      "uid" : "95c3a4e15327d186",
+      "name" : "Attachment: SHAFT Links - Important",
+      "source" : "95c3a4e15327d186.uri",
+      "type" : "text/uri-list",
+      "size" : 346
+    }, {
+      "uid" : "803b4ac6b537be33",
+      "name" : "Attachment: Properties - ExecutionPlatform",
+      "source" : "803b4ac6b537be33.properties",
+      "type" : "text/plain",
+      "size" : 394
+    } ],
+    "parameters" : [ ],
+    "stepsCount" : 1,
+    "attachmentsCount" : 2,
+    "shouldDisplayMessage" : false,
+    "hasContent" : true
+  } ],
+  "testStage" : {
+    "status" : "passed",
+    "steps" : [ {
+      "name" : "Terminal Action [PerformTerminalCommands] successfully performed. With the following test data [Host Name: \"localHost\" | Command: \"ls\" | Exit Status: \"0\"].",
+      "time" : {
+        "start" : 1639118378891,
+        "stop" : 1639118378891,
+        "duration" : 0
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ {
+        "uid" : "54c89bc09f7a4699",
+        "name" : "Attachment: Terminal Action Actual Result - Command Log",
+        "source" : "54c89bc09f7a4699.txt",
+        "type" : "text/plain",
+        "size" : 131
+      } ],
+      "parameters" : [ {
+        "name" : "actionCounter",
+        "value" : "55"
+      }, {
+        "name" : "logText",
+        "value" : "Terminal Action [PerformTerminalCommands] successfully performed. With the following test data [Host Name: \"localHost\" | Command: \"ls\" | Exit Status: \"0\"]."
+      }, {
+        "name" : "attachments",
+        "value" : "[[Terminal Action Actual Result, Command Log, LICENSE\nREADME.md\nallure-results\ndocker-compose_native.yml\ndocker-compose_zalenium.yml\nextent-reports\npom.xml\nreadMeImgs\nsrc\ntarget]]"
+      } ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 1,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Assertion Passed: Demoing local terminal actions",
+      "time" : {
+        "start" : 1639118378891,
+        "stop" : 1639118378892,
+        "duration" : 1
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "actionCounter",
+        "value" : "56"
+      }, {
+        "name" : "customLog",
+        "value" : "Assertion Passed: Demoing local terminal actions"
+      }, {
+        "name" : "stepLog",
+        "value" : "Assertion [ValidateEquals] PASSED. Expected [pom.xml] and Actual [LICENSE\nREADME.md\nallure-results\ndocker-compose_native.yml\ndocker-compose_zalenium.yml\nextent-reports\npom.xml\nreadMeImgs\nsrc\ntarget]. Comparison Type [CONTAINS]. Validation Type [POSITIVE]."
+      }, {
+        "name" : "attachments",
+        "value" : "null"
+      } ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    } ],
+    "attachments" : [ {
+      "uid" : "f3c0a9d5c720ba2c",
+      "name" : "Attachment: SHAFT Engine Logs - Current Method log: sampleTestCase",
+      "source" : "f3c0a9d5c720ba2c.txt",
+      "type" : "text/plain",
+      "size" : 1241
+    } ],
+    "parameters" : [ ],
+    "stepsCount" : 2,
+    "attachmentsCount" : 2,
+    "shouldDisplayMessage" : false,
+    "hasContent" : true
+  },
+  "afterStages" : [ {
+    "name" : "teardownActivities",
+    "time" : {
+      "start" : 1639118378907,
+      "stop" : 1639118379113,
+      "duration" : 206
+    },
+    "description" : "",
+    "status" : "passed",
+    "steps" : [ {
+      "name" : "Successfully Closed All Drivers.",
+      "time" : {
+        "start" : 1639118378908,
+        "stop" : 1639118378908,
+        "duration" : 0
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "actionCounter",
+        "value" : "57"
+      }, {
+        "name" : "logText",
+        "value" : "Successfully Closed All Drivers."
+      } ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Issue Summary: Total Issues = 2, New issues for Failed Tests = 2, Open issues for Passed Tests = 0, Open issues for Failed Tests = 0. Kindly check the attached Issue details.",
+      "time" : {
+        "start" : 1639118378926,
+        "stop" : 1639118378927,
+        "duration" : 1
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ {
+        "uid" : "2a89ad12533d9759",
+        "name" : "Attachment: SHAFT Engine Logs - Issues log CSV: 20211210-063938",
+        "source" : "2a89ad12533d9759.csv",
+        "type" : "text/csv",
+        "size" : 342
+      } ],
+      "parameters" : [ {
+        "name" : "actionCounter",
+        "value" : "58"
+      }, {
+        "name" : "logText",
+        "value" : "Issue Summary: Total Issues = 2, New issues for Failed Tests = 2, Open issues for Passed Tests = 0, Open issues for Failed Tests = 0. Kindly check the attached Issue details."
+      }, {
+        "name" : "attachments",
+        "value" : "[[SHAFT Engine Logs, Issues log CSV: 20211210-063938, java.io.ByteArrayInputStream@3216e99d]]"
+      } ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 1,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    } ],
+    "attachments" : [ {
+      "uid" : "4f01807413dc13d2",
+      "name" : "Attachment: SHAFT Engine Logs - Execution log: 20211210-063938",
+      "source" : "4f01807413dc13d2.txt",
+      "type" : "text/plain",
+      "size" : 29498
+    }, {
+      "uid" : "7fdee171f75a3037",
+      "name" : "Attachment: HTML - Extent Emailable Execution Report",
+      "source" : "7fdee171f75a3037.html",
+      "type" : "text/html",
+      "size" : 737406
+    } ],
+    "parameters" : [ ],
+    "stepsCount" : 2,
+    "attachmentsCount" : 3,
+    "shouldDisplayMessage" : false,
+    "hasContent" : true
+  } ],
+  "labels" : [ {
+    "name" : "package",
+    "value" : "tests.cli.demo.cliTest"
+  }, {
+    "name" : "testClass",
+    "value" : "tests.cli.demo.cliTest"
+  }, {
+    "name" : "testMethod",
+    "value" : "sampleTestCase"
+  }, {
+    "name" : "parentSuite",
+    "value" : "SHAFT: Custom Suite"
+  }, {
+    "name" : "suite",
+    "value" : "SHAFT: Custom Test"
+  }, {
+    "name" : "subSuite",
+    "value" : "tests.cli.demo.cliTest"
+  }, {
+    "name" : "host",
+    "value" : "fv-az42-142"
+  }, {
+    "name" : "thread",
+    "value" : "4122@fv-az42-142.main(1)"
+  }, {
+    "name" : "framework",
+    "value" : "testng"
+  }, {
+    "name" : "language",
+    "value" : "java"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "history" : {
+      "statistic" : {
+        "failed" : 0,
+        "broken" : 0,
+        "skipped" : 0,
+        "passed" : 58,
+        "unknown" : 0,
+        "total" : 58
+      },
+      "items" : [ {
+        "uid" : "ce1428c1b032b862",
+        "reportUrl" : "https://Dorgham4.github.io/io.github.alidorgham/allure/61//#testresult/ce1428c1b032b862",
+        "status" : "passed",
+        "time" : {
+          "start" : 1639100007675,
+          "stop" : 1639100007691,
+          "duration" : 16
+        }
+      }, {
+        "uid" : "ea5b7cced6467bea",
+        "reportUrl" : "https://Dorgham4.github.io/io.github.alidorgham/allure/60//#testresult/ea5b7cced6467bea",
+        "status" : "passed",
+        "time" : {
+          "start" : 1639075171951,
+          "stop" : 1639075171966,
+          "duration" : 15
+        }
+      }, {
+        "uid" : "9115a89b34bbdeba",
+        "reportUrl" : "https://Dorgham4.github.io/io.github.alidorgham/allure/59//#testresult/9115a89b34bbdeba",
+        "status" : "passed",
+        "time" : {
+          "start" : 1639054269978,
+          "stop" : 1639054269990,
+          "duration" : 12
+        }
+      }, {
+        "uid" : "5d6f873c34a68beb",
+        "reportUrl" : "https://Dorgham4.github.io/io.github.alidorgham/allure/58//#testresult/5d6f873c34a68beb",
+        "status" : "passed",
+        "time" : {
+          "start" : 1639031981715,
+          "stop" : 1639031981737,
+          "duration" : 22
+        }
+      }, {
+        "uid" : "6ffe719b35f198bf",
+        "reportUrl" : "https://Dorgham4.github.io/io.github.alidorgham/allure/57//#testresult/6ffe719b35f198bf",
+        "status" : "passed",
+        "time" : {
+          "start" : 1639013604110,
+          "stop" : 1639013604124,
+          "duration" : 14
+        }
+      }, {
+        "uid" : "6097fd5424e8940d",
+        "reportUrl" : "https://Dorgham4.github.io/io.github.alidorgham/allure/56//#testresult/6097fd5424e8940d",
+        "status" : "passed",
+        "time" : {
+          "start" : 1638988729119,
+          "stop" : 1638988729138,
+          "duration" : 19
+        }
+      }, {
+        "uid" : "cbf9fd8ecda13afb",
+        "reportUrl" : "https://Dorgham4.github.io/io.github.alidorgham/allure/55//#testresult/cbf9fd8ecda13afb",
+        "status" : "passed",
+        "time" : {
+          "start" : 1638967920965,
+          "stop" : 1638967920985,
+          "duration" : 20
+        }
+      }, {
+        "uid" : "33b6cf3592cabcfc",
+        "reportUrl" : "https://Dorgham4.github.io/io.github.alidorgham/allure/54//#testresult/33b6cf3592cabcfc",
+        "status" : "passed",
+        "time" : {
+          "start" : 1638945630657,
+          "stop" : 1638945630673,
+          "duration" : 16
+        }
+      }, {
+        "uid" : "c54b4c38468a829e",
+        "reportUrl" : "https://Dorgham4.github.io/io.github.alidorgham/allure/53//#testresult/c54b4c38468a829e",
+        "status" : "passed",
+        "time" : {
+          "start" : 1638927290045,
+          "stop" : 1638927290069,
+          "duration" : 24
+        }
+      }, {
+        "uid" : "7d8c4b93a548aa95",
+        "reportUrl" : "https://Dorgham4.github.io/io.github.alidorgham/allure/52//#testresult/7d8c4b93a548aa95",
+        "status" : "passed",
+        "time" : {
+          "start" : 1638902355303,
+          "stop" : 1638902355326,
+          "duration" : 23
+        }
+      }, {
+        "uid" : "981b4f645ec06855",
+        "reportUrl" : "https://Dorgham4.github.io/io.github.alidorgham/allure/51//#testresult/981b4f645ec06855",
+        "status" : "passed",
+        "time" : {
+          "start" : 1638881691771,
+          "stop" : 1638881691801,
+          "duration" : 30
+        }
+      }, {
+        "uid" : "e03e6f6fd55b0c06",
+        "reportUrl" : "https://Dorgham4.github.io/io.github.alidorgham/allure/50//#testresult/e03e6f6fd55b0c06",
+        "status" : "passed",
+        "time" : {
+          "start" : 1638859243148,
+          "stop" : 1638859243177,
+          "duration" : 29
+        }
+      }, {
+        "uid" : "263385c5bc79891d",
+        "reportUrl" : "https://Dorgham4.github.io/io.github.alidorgham/allure/49//#testresult/263385c5bc79891d",
+        "status" : "passed",
+        "time" : {
+          "start" : 1638841023130,
+          "stop" : 1638841023146,
+          "duration" : 16
+        }
+      }, {
+        "uid" : "acaab205dadb7c65",
+        "reportUrl" : "https://Dorgham4.github.io/io.github.alidorgham/allure/48//#testresult/acaab205dadb7c65",
+        "status" : "passed",
+        "time" : {
+          "start" : 1638815648786,
+          "stop" : 1638815648804,
+          "duration" : 18
+        }
+      }, {
+        "uid" : "bd716ddf16591a0c",
+        "reportUrl" : "https://Dorgham4.github.io/io.github.alidorgham/allure/47//#testresult/bd716ddf16591a0c",
+        "status" : "passed",
+        "time" : {
+          "start" : 1638795137817,
+          "stop" : 1638795137836,
+          "duration" : 19
+        }
+      }, {
+        "uid" : "4a227a35f3a041c0",
+        "reportUrl" : "https://Dorgham4.github.io/io.github.alidorgham/allure/46//#testresult/4a227a35f3a041c0",
+        "status" : "passed",
+        "time" : {
+          "start" : 1638772849423,
+          "stop" : 1638772849440,
+          "duration" : 17
+        }
+      }, {
+        "uid" : "ba79e4fa1b6bde8f",
+        "reportUrl" : "https://Dorgham4.github.io/io.github.alidorgham/allure/45//#testresult/ba79e4fa1b6bde8f",
+        "status" : "passed",
+        "time" : {
+          "start" : 1638754430958,
+          "stop" : 1638754430969,
+          "duration" : 11
+        }
+      }, {
+        "uid" : "fe84050f5bc0e73b",
+        "reportUrl" : "https://Dorgham4.github.io/io.github.alidorgham/allure/44//#testresult/fe84050f5bc0e73b",
+        "status" : "passed",
+        "time" : {
+          "start" : 1638729449956,
+          "stop" : 1638729449969,
+          "duration" : 13
+        }
+      }, {
+        "uid" : "f2000039b28095bb",
+        "reportUrl" : "https://Dorgham4.github.io/io.github.alidorgham/allure/43//#testresult/f2000039b28095bb",
+        "status" : "passed",
+        "time" : {
+          "start" : 1638708555358,
+          "stop" : 1638708555380,
+          "duration" : 22
+        }
+      }, {
+        "uid" : "2ab9fb10fe5e40b8",
+        "reportUrl" : "https://Dorgham4.github.io/io.github.alidorgham/allure/42//#testresult/2ab9fb10fe5e40b8",
+        "status" : "passed",
+        "time" : {
+          "start" : 1638686329664,
+          "stop" : 1638686329673,
+          "duration" : 9
+        }
+      } ]
+    },
+    "tags" : [ ]
+  },
+  "source" : "7cc822c783a8022a.json",
+  "parameterValues" : [ ]
+}
