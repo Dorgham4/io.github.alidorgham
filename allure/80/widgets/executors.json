@@ -1,0 +1,10 @@
+[ {
+  "name" : "GitHub Actions",
+  "type" : "github",
+  "url" : "https://Dorgham4.github.io/io.github.alidorgham/allure",
+  "buildOrder" : 80,
+  "buildName" : "GitHub Actions Run #1579342721",
+  "buildUrl" : "https://github.com/Dorgham4/io.github.alidorgham/actions/runs/1579342721",
+  "reportName" : "Allure Report with history",
+  "reportUrl" : "https://Dorgham4.github.io/io.github.alidorgham/allure/80/"
+} ]
