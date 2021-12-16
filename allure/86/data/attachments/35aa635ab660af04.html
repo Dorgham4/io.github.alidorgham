@@ -1,0 +1,2469 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Extent Reports</title>
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@b00a2d0486596e73dd7326beacf352c639623a0e/commons/img/logo.png">
+<link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@b00a2d0486596e73dd7326beacf352c639623a0e/commons/img/logo.png">
+<link href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@d6562a79075e061305ccfdb82f01e5e195e2d307/spark/css/spark-style.css" rel="stylesheet" />
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@7cc78ce/spark/js/jsontree.js"></script>
+<style type="text/css"></style></head><body class="spa -report standard">
+  <div class="app">
+    <div class="layout">
+<div class="header navbar">
+<div class="vheader">
+<div class="nav-logo">
+<a href="#">
+<div class="logo" style="background-image: url('https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@b00a2d0486596e73dd7326beacf352c639623a0e/commons/img/logo.png')"></div>
+</a>
+</div>
+<ul class="nav-left">
+<li class="search-box">
+<a class="search-toggle" href="#">
+<i class="search-icon fa fa-search"></i>
+<i class="search-icon-close fa fa-close"></i>
+</a>
+</li>
+<li class="search-input"><input id="search-tests" class="form-control" type="text" placeholder="Search..."></li>
+</ul>
+<ul class="nav-right">
+<li class="m-r-10">
+<a href="#"><span class="badge badge-primary">Extent Reports - Powered by SHAFT_Engine</span></a>
+</li>
+<li class="m-r-10">
+<a href="#"><span class="badge badge-primary">Dec 16, 2021 06:38:51 AM</span></a>
+</li>
+</ul>
+</div>
+</div><div class="side-nav">
+<div class="side-nav-inner">
+<ul class="side-nav-menu">
+<li class="nav-item dropdown" onclick="toggleView('dashboard-view')">
+<a id="nav-dashboard" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-bar-chart"></i></span>
+</a>
+</li>
+<li class="nav-item dropdown" onclick="toggleView('test-view')">
+<a id="nav-test" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-list"></i></span>
+</a>
+</li>
+<li class="nav-item dropdown" onclick="toggleView('exception-view')">
+<a id="nav-exception" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-bug"></i></span>
+</a>
+</li>
+</ul>
+</div>
+</div>      <div class="vcontainer">
+        <div class="main-content">
+<div class="container-fluid p-4 view dashboard-view">
+<div class="row">
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0">Started</p>
+<h3>Dec 16, 2021 06:38:51 AM</h3>
+</div></div>
+</div>
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0">Ended</p>
+<h3>Dec 16, 2021 06:39:34 AM</h3>
+</div></div>
+</div>
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0 text-pass">Tests Passed</p>
+<h3>6</h3>
+</div></div>
+</div>
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0 text-fail">Tests Failed</p>
+<h3>1</h3>
+</div></div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6">
+<div class="card">
+<div class="card-header">
+<h6 class="card-title">Tests</h6>
+</div>
+<div class="card-body">
+<div class="">
+<canvas id='parent-analysis' width='115' height='90'></canvas>
+</div>
+</div>
+<div class="card-footer">
+<div><small data-tooltip='26%'>
+<b>6</b> tests passed
+</small>
+</div>
+<div>
+<small data-tooltip='4%'><b>1</b> tests failed,
+<b>16</b> skipped, <b data-tooltip='0%'>0</b> others
+</small>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-6">
+<div class="card">
+<div class="card-header">
+<h6 class="card-title">Log events</h6>
+</div>
+<div class="card-body">
+<div class="">
+<canvas id='events-analysis' width='115' height='90'></canvas>
+</div>
+</div>
+<div class="card-footer">
+<div><small data-tooltip='12%'><b>6</b> events passed</small></div>
+<div>
+<small data-tooltip='2%'><b>1</b> events failed,
+<b data-tooltip='%'>41</b> others
+</small>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><div class="col-md-12">
+<div class="card"><div class="card-header"><p>Timeline</p></div>
+<div class="card-body pt-0"><div>
+<canvas id="timeline" height="120"></canvas>
+</div></div>
+</div>
+</div></div>
+<script>
+var timeline = {
+"tests.gui.google.B_Search_FlatTest_SHAFT.navigateToGoogleHomeAndAssertGoogleLogoIsDisplayed":0.804,"tests.gui.google.B_Search_FlatTest_SHAFT.navigateToGoogleHomeAndAssertPageTitle":0.688,"tests.gui.google.B_Search_FlatTest_SHAFT.searchForQueryAndAssertFirstResultTextIsCorrect":0.002,"tests.gui.google.G_Search_PageObjectModel_ThreadSafe.navigateToGoogleHomeAndAssertGoogleLogoIsDisplayed":0,"tests.gui.google.G_Search_PageObjectModel_ThreadSafe.navigateToGoogleHomeAndAssertPageTitle":0.001,"tests.gui.google.G_Search_PageObjectModel_ThreadSafe.searchForQueryAndAssertFirstResultTextIsCorrect":0.001,"tests.gui.google.C_Search_PageObjectModel_Traditional.navigateToGoogleHomeAndAssertGoogleLogoIsDisplayed":0.1,"tests.gui.google.C_Search_PageObjectModel_Traditional.navigateToGoogleHomeAndAssertPageTitle":0.036,"tests.gui.google.C_Search_PageObjectModel_Traditional.searchForQueryAndAssertFirstResultTextIsCorrect":2.275,"tests.gui.google.F_Search_PageObjectModel_Fluent.navigateToGoogleHomeAndAssertGoogleLogoIsDisplayed":0,"tests.gui.google.F_Search_PageObjectModel_Fluent.navigateToGoogleHomeAndAssertPageTitle":0,"tests.gui.google.F_Search_PageObjectModel_Fluent.searchForQueryAndAssertFirstResultTextIsCorrect":0,"tests.gui.google.E_Search_PageObjectModel_Traditional_SHAFTAssertions.navigateToGoogleHomeAndAssertGoogleLogoIsDisplayed":0,"tests.gui.google.E_Search_PageObjectModel_Traditional_SHAFTAssertions.navigateToGoogleHomeAndAssertPageTitle":0.001,"tests.gui.google.E_Search_PageObjectModel_Traditional_SHAFTAssertions.searchForQueryAndAssertFirstResultTextIsCorrect":0.001,"tests.gui.google.D_Search_PageObjectModel_Traditional_DataDriven.navigateToGoogleHomeAndAssertGoogleLogoIsDisplayed":0.001,"tests.gui.google.D_Search_PageObjectModel_Traditional_DataDriven.navigateToGoogleHomeAndAssertPageTitle":0,"tests.gui.google.D_Search_PageObjectModel_Traditional_DataDriven.searchForQueryAndAssertFirstResultTextIsCorrect":0,"tests.gui.google.A_Search_FlatTest_NativeSeleniumWebDriver.navigateToGoogleHomeAndAssertGoogleLogoIsDisplayed":0.027,"tests.gui.google.A_Search_FlatTest_NativeSeleniumWebDriver.navigateToGoogleHomeAndAssertPageTitle":0.001,"tests.gui.google.A_Search_FlatTest_NativeSeleniumWebDriver.searchForQueryAndAssertFirstResultTextIsCorrect":0,"tests.api.users.UserData.validateUserEmail":3.253,"tests.cli.demo.cliTest.sampleTestCase":0.009
+};
+</script>
+<div class="row">
+</div>
+</div>
+<script>
+var statusGroup = {
+parentCount: 5,
+passParent: 6,
+failParent: 1,
+warningParent: 0,
+skipParent: 16,
+childCount: 5,
+passChild: 0,
+failChild: 0,
+warningChild: 0,
+skipChild: 0,
+infoChild: 0,
+grandChildCount: 5,
+passGrandChild: 0,
+failGrandChild: 0,
+warningGrandChild: 0,
+skipGrandChild: 0,
+infoGrandChild: 0,
+eventsCount: 5,
+passEvents: 6,
+failEvents: 1,
+warningEvents: 0,
+skipEvents: 16,
+infoEvents: 25
+};
+</script><div class="test-wrapper row view test-view">
+  <div class="test-list">
+    <div class="test-list-tools">
+<ul class="tools pull-left">
+<li><a href="#"><span class="font-size-14">Tests</span></a></li>
+</ul>
+<ul class="tools text-right">
+<li class="dropdown">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-exclamation-circle"></i></a>
+<ul id="status-toggle" class="dropdown-menu dropdown-md p-v-0">
+<a class="dropdown-item" status="pass" href="#"><span>Pass</span><span class="status success"></span></a>
+<a class="dropdown-item" status="fail" href="#"><span>Fail</span><span class="status danger"></span></a>
+<a class="dropdown-item" status="skip" href="#"><span>Skip</span><span class="status warning"></span></a>
+<div class="dropdown-divider"></div>
+<a status="clear" class="dropdown-item" href="#"><span>Clear</span><span class="pull-right"><i class="fa fa-close"></i></span></a>
+</ul>
+</li>
+</ul>
+</div>    <div class="test-list-wrapper scrollable">
+      <ul class="test-list-item">
+        <li class="test-item"  status="pass" test-id="1"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">tests.gui.google.B_Search_FlatTest_SHAFT.navigateToGoogleHomeAndAssertGoogleLogoIsDisplayed</p>
+            <p class="text-sm">
+              <span>6:38:56 AM</span> / <span>00:00:00:804</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">tests.gui.google.B_Search_FlatTest_SHAFT.navigateToGoogleHomeAndAssertGoogleLogoIsDisplayed</h5>
+<span class='badge badge-success'>12.16.2021 6:38:56 AM</span>
+<span class='badge badge-danger'>12.16.2021 6:38:56 AM</span>
+<span class='badge badge-default'>00:00:00:804</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>6:38:56 AM</td>
+        <td>
+          Assertion Passed: Asserting that the Google logo is displayed
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>6:38:56 AM</td>
+        <td>
+          Assertion [ValidateElementMatches] PASSED. Expected [Element should match the reference screenshot] and Actual [TRUE]. Comparison Type [EXACT_OPENCV]. Validation Type [POSITIVE].
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>6:38:56 AM</td>
+        <td>
+          Test Passed.
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="pass" test-id="2"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">tests.gui.google.B_Search_FlatTest_SHAFT.navigateToGoogleHomeAndAssertPageTitle</p>
+            <p class="text-sm">
+              <span>6:38:58 AM</span> / <span>00:00:00:688</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">tests.gui.google.B_Search_FlatTest_SHAFT.navigateToGoogleHomeAndAssertPageTitle</h5>
+<span class='badge badge-success'>12.16.2021 6:38:58 AM</span>
+<span class='badge badge-danger'>12.16.2021 6:38:59 AM</span>
+<span class='badge badge-default'>00:00:00:688</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=2</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>6:38:59 AM</td>
+        <td>
+          Assertion Passed: Asserting that the page title is Google
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>6:38:59 AM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+        <a href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAACAAElEQVR4XuzdaZClZX3w/zxV/6qn6nnhK1/9l6qYqKAm7hjcIoIR14gx0ajhUYM8wRjigpKwiERERUBUCIKiozJCxIgBDAoICgQRLQJC2JwM68gMs880PVsv179/V/d15u67z9Y95/T03PP5VF3VPWfrc04fePPt33X9TgIAAAAAAACgEX6nfgEAAAAAAAAA+yYBGAAAAAAAAKAhBGAAAAAAAACAhhCAAQAAAAAAABpCAAYAAAAAAABoCAEYAAAAAAAAoCEEYAAAAAAAAICGEIABAAAAAAAAGkIABgAAAAAAAGgIARgAAAAAAACgIQRgAAAAAAAAgIYQgAEAAAAAAIDs2nt2pLecuyEdeNIT6f8+bo01xBXvcbzX8Z4PkgAMAAAAAAAApB/dvWNOpLQWZ8V7PygCMAAAAAAAAJDe9KUNc8KktTgr3vtBEYABAAAAAACAdIBtn/faivd+UARgAAAAAAAAYE6UtBZ3DYoADAAAAAAAAMwJktbirkERgAEAAAAAAIA5QdJa3DUoAjAAAAAAAAAwJ0hai7sGRQAGAAAAAAAA5gRJa3HXoAjAAAAAAAAAwJwgaS3uGhQBGAAAAAAAABbBffc/kI47/qS84vuFXj4s9SBpLe4aFAEYAAAAAAAAFsFHjz8xveeoY/KKqLvQy4elHiStxV2DsuQC8Otf/6b0zW99u34xAAAAAAAA7NOO+bsPt4JuxN2FXj4s9SC5t9d//XYsnXT51jmXD2IdeNIT+TW/+sz1c67bW2tQ9koA/sUvbku/+7Snp49+9GP1q4YegL/97eVp586d9YsH5he33ZaOPPK96QUvPCj9/tMPSH908MvTaZ8+Pe3YsaN1mxtu+Gla+eCDlXsBAAAAAAD7u/Xr16dPfOIT6eUvf3k64IAD0kEHHZSOPvrodNddd9Vvusc+9rGPpbPOOmvO93vi9NNPT8cee2z9YipiG+cIubHqWz3P5/JhqQfJYa6DPr02Xfar7enxzRNpbCKlTdsm0xV3bk8v+fS61m1ed8769MJ/WjvnvoNY/9/H16S3nb8x/f4JT8y5bm+tQdkrAfjDHzku/e0Hj00HPusP0tatI7OuG2YA3rZtW3r6Mw5MTz75ZP2qgVi5cmU64MDnpC9+8cvp0UcfTRs2bEi33PLz9Mo/fnU6/h9OaN3ubX/+9vSTn1xfuScAAAAAALA/27x5c3rVq16V3v/+96f77rsvD7OtXbs2feUrX0nPfvaz04oVK+p32SNbt25t9RIBmKIeJIe1/t+PrUkr142nf79rRzr0zPXp2Sc/kV5z1vp0w30703+vHc/X1++zP6xBWfQAvGXLlhxJ77//gRx7v/OdS2ZdH5d98UtfTu9571/n2x122GvTjTfe1Lp+1arfpqPe/3/S81/w4vSSP3pZ+uAHj03r12/I18X/CGOy+KGHHm7dPmJyPGb8jzIeL65/1rP/MH3nkktbtxmU733vX9MLX/SS+sXp17++K/37v1+dv//Ld747P4cDDnh2DuEhJqLfcsSfpef8wfPSqw45NH32s2ek8fHxfN2nTjt96n+8x6ejj/6b9OKD/ihfFiH7pJNPSQe/9BU5osdjRnAGAAAAAAD2TV/84hfToYce2uoDVY899lianJzM33/84x9Pn/rUp9KHPvSh9Ja3vCWvX/3qV+lv//Zv8/d/9Vd/lTtCeOihh/K///iP/zi97GUvS6eeemrrcYY9Abxq1ap04IEHpu985zvpqKOOSq94xSvSN77xjRy03/e+96VDDjkkXXXVVa37Xnjhhfn1x/Tzm9/85nTHHXe0rvve976XXv3qV+frP/e5z6V3vetd6fLLL8/XPfHEE+kDH/hAvj5+RryOiYmJfN3tt9+e35O4X7wH8b6NjY21Hpe56kFyWCumfMOrPr972jfWH35ybfr497akp89M5da3gP7Hf92S1o9MpK3bJ9P5Px1N3/r5trT81m35uvd8fVN6ZMN4+vtLNqc7Ht2VJ4uvuWdHesaJ7Sd861tA3/XYWDr1iq3pR3fvSA+sGUuPbZxIR39r05z7DXMNyqIH4BJkw1e/elH607e8ddb1cd1BBx2co29MB3/hC1/MkXPTpk35f0qHv+4NOYiOjIykdevWp794+1/mIBy6BeBwzz335OuHNQF8552/zo8fUXvXrl31q1v+8LnPb00Ar169Oj3zgGfnIB2R+t57782h92tf+3q+/nOf+3z+97Jvfiu/3nDiiSfn171mzZq8tfSZZ52d/vhVh7b+hwYAAAAAAOxb3vGOd/QVYU888cQcNEvk/bM/+7P0hje8ITeG6ChvetOb0hVXXJGvi/j72c9+Nn8f20u/+MUvTj/+8Y/zv4cdgCPMPu1pT0vf/e53879/9rOfpWc84xnpBz/4Qf73Nddck19HiID93Oc+N3eeEDH89a9/ff7+8ccfz/cr22AvX748h+XyOPEaP/nJT+ZGMjo6mt+Piy++OF/3tre9LV122WX5++gp8TqjFe1NsY3zcceflFd9q+f5XD4s9SA5rPW7x69JG0cn0yW/2JZDbP36sqoB+PBz1qf4+4W/XrYpb9v8hWufTBufnEzf/vl0AH7XVzemHWMpnXv9k/nfv/ePa9KD68bTyT9of4ZwPQDf/siu9OiG8dYW1BGi4/Hr9xvmGpRFD8BveMObc/gN8R/y7/3+M9N9993fuj5ibQTeYvv27TmQ/uhHP85/7fG033tG2rhxY+v6G2+6KV8W/+Hu7QAcIv7G+b/Pfe4Lcpi+8KtfmzOdWw3AX/nKBa3nV5zx+TPTn73tL/L3EYAj7hZ5knnq/bj55v9oXRZ/DRRTzbfe+ovWZQAAAAAAwL7jda97XfrWt77V+ndM78YZwGWdcsop+fKTTjqp9X346Ec/msNr8cEPfjBP04ZoLNEVipi8veCCC/L3ww7A0WwiAMdxmeGRRx7J/y6N5je/+U3e2jpEuI4tqYs777wzPetZz8rfx6RvvDdFhN4XvvCFOQBHHI7HjGnjIoLv29/+9vx9TEXH9HH0pXaT1XtDnOX7nqOOySui7kIvH5Z6kBzmest5G9Jv1oynnVO/ml+s3JW+9JMn05u+tGHWbaoBOILvfz6yq3Xd//OxNXlKtxqAQzUof//27XlKuP6zY7ULwF+7abR1/cs+Mz2l/NxPDucM4nZrUBY1AMeEbATf+KuP4n//7/elU0/9VOvfEUPPP3/6fz7Fy17+yvSNZd9MV1xxZTroJS+ddV1sCR1R98EHH1oSATjE9O8vbrstfenL5+bzfn//6QekCy78auv6agA+4YST0rF//+HWdeFfv3953t46RAA+8sj3tq6LbR7iNbRbl132vdbtAAAAAACAfce73/3uvL1xEcEyukesiLMf/vB0S4gAfMYZZ7RuF/E2JmaLCLCxzXK46aab0pFHHpm3QX7rW9+anv/857euW6wAHAN8IfpG/Lv47//+7zzJG2Ka+bTTTkt/+qd/mo444og8/VuuW7ZsWfrLv/zL1v1CTDxHAL7//vvzY8bWz2W99KUvbU0PR1Q+55xz8r/jtcfPqAbxveGYv/twK+hG3F3o5cNSD5KLsQ47a32e0v3x3TvyBG9swVzOAK4G4Etv25Z+8J/bZ933mv/aMSsAb9s5e2I3Joy/+6vZ9ymrXQA+7ard08Iv+tT0RHqZCF6MNSiLGoAjdpYzeMt6+jMOTM97/ota/8FFrP36178x634RgGOL5G4BOM4UbheAY+vkxQ7AdfHcI3yXv3LpJwDHGcchAvD7/vr9revWrVuXX8O9993XugwAAAAAANi3xWRuBMx2gfL888+fdwCO+PnMZz4z/fSnP21dF9slL8UAHOE7Anhs4RxiS+hyXZz/G8G3iGnh2Mo6AvDmzZvzY8Yxor08/PDD6bWvfW3eQnpvim2cI+TGqm/1PJ/Lh6UeJBd7xZnA4xMpvW/Z9Nm7swLwL+fG3IjF1QA8uocB+FNXCsDzEv/R/sEfPj9dfPHyHGjLWrFiRb78qqt+mG8Xsfakk3dvXRD/Y4gtoG+44afpjjvvzNs9l5AaYgvoiKsRdbds2dKKwcWnT//MogXg2O45Xl9dxNr4ufE/tzBrC+gLLsznGlfFFtBHHPG2/H09AIfn/MHz0uWX/9usy8pjAwAAAAAA+57oKIcffnh65zvfmc+7jRAcPeSSSy5JL3jBC9JFF00fr9lvAI7gGXG07Moa08AvetGL2kbfvR2AP/KRj+SzjUM0nIjdT3/60/N78OCDD+bvY9o3fOc738nbQ1fPAP785z+fv4/toeO1f//738/3jcnn+2YG6sbGxtK73vWu1vnAtFcPksNaf/W1jekbN+/ebrm64mzgD1+6JX9fDcDnXf9k3iq6etuH1o8LwG0sWgD+7ncvmzXpWxVTsH915Hvy9xFr/+jgl+fYG7f98rnn5fN0Y5/6+KuOuP74fzghbwewZs2afFbu3/3d37ceK87fjW2fQ0wHx/m5JQCvXLkyh9i77rq79VckgxSvMWL1RRd9I/+PK57fL35xW94GOs4+Lg466OB8m61bR/Jt4kzff/mXy/L/fOK5vfBFL0nLl38n37ZdAP7MZz6XDnn1YflnxHbT3/728vwexeMBAAAAAAD7pphojW2KYxL4gAMOyME2zrC9+eabW7fpNwCHeKzYEvmNb3xjOvvss/M07XOe85x8ru5SCsD33ntvjt+vec1r8nbPd999dz7397DDDsvXf+1rX8vvSWzlfO655+btrP/t36YH5aKzHHPMMelVr3pVOuSQQ/K5v2WQ8Mc//nF+3Fe+8pV5nXDCCW07FbvVg+SwVkTX7btSjrev/cL69PxT16bXnLU+B9snd0zm+Bq3qwbgt52/MU1MpvSOCzem3z1+Tfrc1SNp3cjsM4AF4GmLFoDf+md/Puus36qIvWVC9jV/8ro8SRvn3h5w4HPSYa85PN1yy89bt42IG9c993kvTAe/9BV5Wrg60fvv/3711P8EXpUOPfRP0l8fdXQ+OzgeM8RffkRofsYznzXnnOFBiW2qI0rH84uzf1/6slfkwL1u3frWbb7whS/m6Pve9x2V/x3TwG9805+mZz/nuenVh74mP+eI3aFdAI4YftJJn8jbRMc08J//xTvyAeYAAAAAAABNE+chVx166KGztrbel8Q2zscdf1Je9a2e53P5sNSD5DDXG764IZ/hu3brRBqbSGnjk5Ppmnt2pNeePR1kY1UDcKyzfjyS1myZSOtHJtIZPxpJl/1qe/rmLQJw3aIFYAAAAAAAAJiP2BE2tsD+2c9+lv99yy235Cnm9et3D97tS+Is3/ccdUxeEXUXevmw1IPkUlu/94+z/33zip15Erh+u311DYoADAAAAAAAwJJ17bXX5u2gYxvo2NL5uuuuq99kn3HM3324FXQj7i708mGpB8mltGJSN7aAfu/XN6Wn/cOa9J6przE5HFtI12+7r65BEYABAAAAAABgEcQ2zhFyY9W3ep7P5cNSD5JLbX30X7akB9eNp+1jKf33E+PpQ5dunnObfXkNigAMAAAAAAAAzAmS1uKuQRGAAQAAAAAAgDlB0lrcNSgCMAAAAAAAADAnSFqLuwZFAAYAAAAAAADmBElrcdegCMAAAAAAAADAnCBpLe4aFAEYAAAAAAAAmBMkrcVdgyIAAwAAAAAAAOmAk56YEyWtxVnx3g+KAAwAAAAAAACkN31pw5wwaS3Oivd+UARgAAAAAAAAIP3o7h1zwqS1OCve+0ERgAEAAAAAAIDs2nt2pLecuyEdaDvooa94j+O9jvd8kARgAAAAAAAAgIYQgAEAAAAAAAAaQgAGAAAAAAAAaAgBGAAAAAAAAKAhBGAAAAAAAACAhhCAAQAAAAAAABpCAAYAAAAAAABoCAEYAAAAAAAAoCEEYAAAAAAAAICGEIABAAAAAAAAGkIABgAAAAAAAGgIARgAAAAAAACgIQRgAAAAAAAAgIYQgAEAAAAAAAAaQgAGAAAAAAAAaAgBGAAAAAAAAKAhBGAAAAAAAACAhhCAAQAAAAAAABpCAAYAAAAAAABoCAEYAAAAAAAAoCEEYAAAAAAAAICGEIABAAAAAAAAGkIABgAAAAAAAGgIARgAAAAAAACgIQRgAAAAAAAAgIYQgAEAAAAAAAAaQgAGAAAAAAAAaAgBGAAAAAAAAKAhBGAAAAAAAACAhhCAAQAAAAAAABpCAAYAAAAAAABoCAEYAAAAAAAAoCEEYAAAAAAAAICGEIABAAAAAAAAGkIABgAAAAAAAGgIARgAAAAAAACgIQRgAAAAAAAAgIYQgAEAAAAAAAAaQgAGAAAAAAAAaAgBGAAAAAAAAKAhBGAAAAAAAACAhhCAAQAAAAAAABpCAAYAAAAAAABoCAEYAAAAAAAAoCEEYAAAAAAAAICGEIABAAAAAAAAGkIABgAAAAAAAGgIARgAAAAAAACgIQRgAAAAAAAAgIYQgAEAAAAAAAAaQgAGAAAAAAAAaAgBGAAAAAAAAKAhBGAAAAAAAACAhhCAAQAAAAAAABpCAAYAAAAAAABoCAEYAAAAAAAAoCEEYAAAAAAAAICGEIABAAAAAAAAGkIABgAAAAAAAGgIARgAAAAAAACgIQRgAAAAAAAAgIYQgAEAAAAAAAAaQgAGAAAAAAAAaAgBGAAAAAAAAKAhBGAAAAAAAACAhhCAAQAAAAAAABpCAAYAAAAAAABoCAEYAAAAAAAAoCEEYAAAAAAAAICGEIABAAAAAAAAGkIABgAAAAAAAGgIARgAAAAAAACgIQRgAAAAAAAAgIYQgAEAAAAAAAAaQgAGAAAAAAAAaAgBGAAAAAAAAKAhBGAAAAAAAACAhhCAAQAAAAAAABpCAAYAAAAAAABoCAEYAAAAAAAAoCEEYAAAAAAAAICGEIABAAAAAAAAGkIABgAAAAAAAGgIARgAAAAAAACgIQRgAAAAAAAAgIYQgAEAAAAAAAAaQgAGAAAAAAAAaAgBGAAAAAAAAKAhBGAAAAAAAACAhhCAAQAAAAAAABpCAAYAAAAAAABoCAEYAAAAAAAAoCEEYAAAAAAAAICGEIABAAAAAAAAGkIABgAAAAAAAGgIARgAAAAAAACgIQRgAAAAAAAAgIYQgAEAAAAAAAAaQgAGAAAAAAAAaAgBGAAAAAAAAKAhBGAA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AADQEwJgAAAAAAAAgJ4QAAMAAAAAAAD0hAAYAAAAAAAAoCcEwAAAAAAAAAA9IQAGAAAAAAAA6AkBMAAAAAAAAEBPCIABAAAAAAAAekIADAAAAAAAANATAmAAAAAAAACAnhAAAwAAAAAAAPSEABgAAAAAAACgJwTAAAAAAAAAAD0hAAYAAAAAAADoCQEwAAAAAAAAQE8IgAEAAAAAAAB6QgAMAAAAAAAA0BMCYAAAAAAAAICeEAADAAAAAAAA9IQAGAAAAAAAAKAnBMAAAAAAAAAAPSEABgAAAAAAAOgJATAAAAAAAABATwiAAQAAAAAAAHpCAAwAAAAAAADQEwJgAAAAAAAAgJ4QAAMAAAAAAAD0hAAYAAAAAAAAoCcEwAAAAAAAAAA9IQAGAAAAAAAA6AkBMAAAAAAAAEBPCIABAAAAAAAAekIADAAAAAAAANATAmAAAAAAAACAnhAAAwAAAAAAAPSEABgAAAAAAACgJwTAAAAAAAAAAD0hAAYAAAAAAADoCQEwAAAAAAAAQE8IgAEAAAAAAAB6QgAMAAAAAAAA0BMCYAAAAAAAAICeEAADAAAAAAAA9IQAGAAAAAAAAKAnBMAAAAAAAAAAPSEABgAAAAAAAOgJATAAAAAAAABATwiAAQAAAAAAAHpCAAwAAAAAAADQEwJgAAAAAAAAgJ4QAAMAAAAAAAD0hAAYAAAAAAAAoCcEwAAAAAAAAAA9IQAGAAAAAAAA6AkBMAAAAAAAAEBPCIABAAAAAAAAekIADAAAAAAAANATAmAAAAAAAACAnhAAAwAAAAAAAPSEABgAAAAAAACgJwTAAAAAAAAAAD0hAAYAAAAAAADoCQEwAAAAAAAAQE8IgAEAAAAAAAB6QgAMAAAAAAAA0BMCYAAAAAAAAICeEAADAAAAAAAA9IQAGAAAAAAAAKAnBMAAAAAAAAAAPSEABgAAAAAAAOgJATAAAAAAAABATwiAAQAAAAAAAHpCAAwAAAAAAADQEwJgAAAAAAAAgJ4QAAMAAAAAAAD0hAAYAAAAAAAAoCcEwAAAAAAAAAA9IQAGAAAAAAAA6AkBMAAAAAAAAEBPCIABAAAAAAAAekIADAAAAAAAANATAmAAAAAAAACAnhAAAwAAAAAAAPSEABgAAAAAAACgJwTAAAAAAAAAAD0hAAYAAAAAAADoCQEwAAAAAAAAQE8IgAEAAAAAAAB6QgAMAAAAAAAA0BMCYAAAAAAAAICeEAADAAAAAAAA9IQAGAAAAAAAAKAnBMAAAAAAAAAAPSEABgAAAAAAAOgJATAAAAAAAABATwiAAQAAAAAAAHpCAAwAAAAAAADQEwJgAAAAAAAAgJ4QAAMAAAAAAAD0hAAYAAAAAPj/2bvTXzvq+wzg/SOqvmhVVapUVX3XF22lVF2StlKrVpW6qU3Vpo3UF33ZNm2SshgwOyZh34wNhhBICASMbTAEsrGZ1WaxIQkQCJsJgbD8A9P7jPndjOece869rvG9fO/nIz3yuWe595w5M8fzm2dmDgAARSiAAQAAAAAAAIpQAAMAAAAAAAAUoQAGAAAAAAAAKEIBDAAAAAAAAFCEAhgAAAAAAACgCAUwAAAAAAAAQBEKYAAAAAAAAIAiFMAAAAAAAAAARSiAAQAAAAAAAIpQAAMAAAAAAAAUoQAGAAAAAAAAKEIBDAAAAAAAAFCEAhgAAAAAAACgCAUwAAAAAAAAQBEKYAAAAAAAAIAiFMAAAAAAAAAARSiAAQAAAAAAAIpQAAMAAAAAAAAUoQAGAAAAAAAAKEIBDAAAAAAAAFCEAhgAAAAAAACgCAUwAAAAAAAAQBEKYAAAAAAAAIAiFMAAAAAAAAAARSiAAQAAAAAAAIpQAAMAAAAAAAAUoQAGAAAAAAAAKEIBDAAAAAAAAFCEAhgAAAAAAACgCAUwAAAAAAAAQBEKYAAAAAAAAIAiFMAAAAAAAAAARSiAAQAAAAAAAIpQAAMAAAAAAAAUoQAGAAAAAAAAKEIBDAAAAAAAAFCEAhgAAAAAAACgCAUwAAAAAAAAQBEKYAAAAAAAAIAiFMAAAAAAAAAARSiAAQAAAAAAAIpQAAMAAAAAAAAUoQAGAAAAAAAAKEIBDAAAAAAAAFCEAhgAAAAAAACgCAUwAAAAAAAAQBEKYAAAAAAAAIAiFMAAAAAAAAAARSiAAQAAAAAAAIpQAAMAAAAAAAAUoQAGAAAAAAAAKEIBDAAAAAAAAFCEAhgAAAAAAACgCAUwAAAAAAAAQBEKYAAAAAAAAIAiFMAAAAAAAAAARSiAAQAAAAAAAIpQAAMAAAAAAAAUoQAGAAAAAAAAKEIBDAAAAAAAAFCEAhgAAAAAAACgCAUwAAAAAAAAQBEKYAAAAAAAAIAiFMAAAAAAAAAARSiAAQAAAAAAAIpQAAMAAAAAAAAUoQAGAAAAAAAAKEIBDAAAAAAAAFCEAhgAAAAAAACgCAUwAAAAAAAAQBEKYAAAAAAAAIAiFMAAAAAAAAAARSiAAQAAAAAAAIpQAAMAAAAAAAAUoQAGAAAAAAAAKEIBDAAAAAAAAFCEAhgAAAAAAACgCAUwAAAAAAAAQBEKYAAAAAAAAIAiFMAAAAAAAAAARSiAAQAAAAAAAIpQAAMAAAAAAAAUoQAGAAAAAAAAKEIBDAAAAAAAAFCEAhgAAAAAAACgCAUwAAAAAAAAQBEKYAAAAAAAAIAiFMAAAAAAAAAARSiAAQAAAAAAAIpQAAMAAAAAAAAUoQAGAAAAAAAAKEIBDAAAAAAAAFCEAhgAAAAAAACgCAUwAAAAAAAAQBEKYAAAAAAAAIAiFMAAAAAAAAAARSiAAQAAAAAAAIpQAAMAAAAAAAAUoQAGAAAAAAAAKEIBDAAAAAAAAFCEAhgAAAAAAACgCAUwAAAAAAAAQBEKYAAAAAAAAIAiFMAAAAAAAAAARSiAAQAAAAAAAIpQAAMAAAAAAAAUoQAGAAAAAAAAKEIBDAAAAAAAAFCEAhgAAAAAAACgCAUwAAAAAAAAQBEKYAAAAAAAAIAiFMAAAAAAAAAARSiAAQAAAAAAAIpQAAMAAAAAAAAUoQAGAAAAAAAAKEIBDAAAAAAAAFCEAhgAAAAAAACgCAUwAAAAAAAAQBEKYAAAAAAAAIAiFMAAAAAAAAAARSiAAQAAAAAAAIpQAAMAAAAAAAAUoQAGAAAAAAAAKEIBDAAAAAAAAFCEAhgAAAAAAACgCAUwAAAAAAAAQBEKYAAAAAAAAIAiFMAAAAAAAAAARSiAAQAAAAAAAIpQAAMAAAAAAAAUoQAGAAAAAAAAKEIBDAAAAAAAAFCEAhgAAAAAAACgCAUwAAAAAAAAQBEKYAAAAAAAAIAiFMAAAAAAAAAARSiAAQAAAAAAAIpQAAMAAAAAAAAUoQAGAAAAAAAAKEIBDAAAAAAAAFCEAhgAAAAAAACgCAUwAAAAAAAAQBEKYAAAAAAAAIAiFMAAAAAAAAAARSiAAQAAAAAAAIpQAAMAAAAAAAAUoQAGAAAAAAAAKEIBDAAAAAAAAFCEAhgAAAAAAACgCAUwAAAAAAAAQBEKYAAAAAAAAIAiFMAAAAAAAAAARSiAAQAAAAAAAIpQAAMAAAAAAAAUoQAGAAAAAAAAKEIBDAAAAAAAAFCEAhgAAAAAAACgCAUwAAAAAAAAQBEKYAAAAAAAAIAiFMAAAAAAAAAARSiAAQAAAAAAAIpQAAMAAAAAAAAUoQAGAAAAAAAAKEIBDAAAAAAAAFCEAhgAAAAAAACgCAUwAAAAAAAAQBEKYAAAAAAAAIAiFMAAAAAAAAAARSiAAQAAAAAAAIpQAAMAAAAAAAAUoQAGAAAAAAAAKEIBDAAAAAAAAFCEAhgAAAAAAACgCAUwAAAAAAAAQBEKYAAAAAAAAIAiFMAAAAAAAAAARSiAAQAAAAAAAIpQAAMAAAAAAAAUoQAGAAAAAAAAKEIBDAAAAAAAAFCEAhgAAAAAAACgCAUwAAAAAAAAQBEKYAAAAAAAAIAiFMAAAAAAAAAARSiAAQAAAAAAAIpQAAMAAAAAAAAUoQAGAAAAAAAAKEIBDAAAAAAAAFCEAhgAAAAAAACgCAUwAAAAAAAAQBEKYAAAAAAAAIAiFMAAAAAAAAAARSiAAQAAAAAAAIpQAAMAAAAAAAAUoQAGAAAAAAAAKEIBDAAAAAAAAFCEAhgAAAAAAACgCAUwAAAAAAAAQBEKYAAAAAAAAIAiFMAAAAAAAAAARSiAAQAAAAAAAIpQAAMAAAAAAAAUoQAGAAAAAAAAKEIBDAAAAAAAAFCEAhgAAAAAAACgCAUwAAAAAAAAQBEKYAAAAAAAAIAiFMAAAAAAAAAARSiAAQAAAAAAAIpQAAMAAAAAAAAUoQAGAAAAAAAAKEIBDAAAAAAAAFCEAhgAAAAAAACgCAUwAAAAAAAAQBEKYAAAAAAAAIAiFMAAAAAAAAAARSiAAQAAAAAAAIpQAAMAAAAAAAAUoQAGAAAAAAAAKEIBDAAAAAAAAFCEAhgAAAAAAACgCAUwAAAAAAAAQBEKYAAAAAAAAIAiFMAAAAAAAAAARSiAAQAAAAAAAIpQAAMAAAAAAAAUoQAGAAAAAAAAKEIBDAAAAAAAAFCEAhgAAAAAAACgCAUwAAAAAAAAQBEKYAAAAAAAAIAiFMAAAAAAAAAARSiAAQAAAAAAAIpQAAMAAAAAAAAUoQAGAAAAAAAAKEIBDAAAAAAAAFCEAhgAAAAAAACgCAUwAAAAAAAAQBEKYAAAAAAAAIAiFMAAAAAAAAAARSiAAQAAAAAAAIpQAAMAAAAAAAAUoQAGAAAAAAAAKEIBDAAAAAAAAFCEAhgAAAAAAACgCAUwAAAAAAAAQBEKYAAAAAAAAIAiFMAAAAAAAAAARSiAAQAAAAAAAIpQAAMAAAAAAAAUoQAGAAAAAAAAKEIBDAAAAAAAAFCEAhgAAAAAAACgCAUwAAAAAAAAQBEKYAAAAAAAAIAiFMAAAAAAAAAARSiAAQAAAAAAAIpQAAMAAAAAAAAUoQAGAAAAAAAAKEIBDAAAAAAAAFCEAhgAAAAAAACgCAUwAAAAAAAAQBEKYAAAAAAAAIAiFMAAAAAAAAAARSiAAQAAAAAAAIpQAAMAAAAAAAAUoQAGAAAAAAAAKEIBDAAAAAAAAFCEAhgAAAAAAACgCAUwAAAAAAAAQBEKYAAAAAAAAIAiFMAAAAAAAAAARSiAAQAAAAAAAIpQAAMAAAAAAAAUoQAGAAAAAAAAKEIBDAAAAAAAAFCEAhgAAAAAAACgCAUwAAAAAAAAQBEKYAAAAAAAAIAiFMAAAAAAAAAARSiAAQAAAAAAAIpQAAMAAAAAAAAUoQAGAAAAAAAAKEIBDAAAAAAAAFCEAhgAAAAAAACgCAUwAAAAAAAAQBEKYAAAAAAAAIAiFMAAAAAAAAAARSiAAQAAAAAAAIpQAAMAAAAAAAAUoQAGAAAAAAAAKEIBDAAAAAAAAFCEAhgAAAAAAACgCAUwAAAAAAAAQBEKYAAAAAAAAIAiFMAAAAAAAAAARSiAAQAAAAAAAIpQAAMAAAAAAAAUoQAGAAAAAAAAKEIBDAAAAAAAAFCEAhgAAAAAAACgCAUwAAAAAAAAQBEKYAAAAAAAAIAiFMAAAAAAAAAARSiAAQAAAAAAAIpQAAMAAAAAAAAUoQAGAAAAAAAAKEIBDAAAAAAAAFCEAhgAAAAAAACgCAUwAAAAAAAAQBEKYAAAAAAAAIAiFMAAAAAAAAAARSiAAQAAAAAAAIpQAAMAAAAAAAAUoQAGAAAAAAAAKEIBDAAAAAAAAFCEAhgAAAAAAACgCAUwAAAAAAAAQBEKYAAAAAAAAIAiFMAAAAAAAAAARSiAAQAAAAAAAIpQAAMAAAAAAAAUoQAGAAAAAAAAKEIBDAAAAAAAAFCEAhgAAAAAAACgCAUwAAAAAAAAQBEKYAAAAAAAAIAiFMAAAAAAAAAARSiAAQAAAAAAAIpQAAMAAAAAAAAUoQAGAAAAAAAAKEIBDAAAAAAAAFCEAhgAAAAAAACgCAUwAAAAAAAAQBEKYAAAAAAAAIAiFMAAAAAAAAAARSiAAQAAAAAAAIpQAAMAAAAAAAAUoQAGAAAAAAAAKEIBDAAAAAAAAFCEAhgAAAAAAACgCAUwAAAAAAAAQBEKYAAAAAAAAIAiFMAAAAAAAAAARSiAAQAAAAAAAIpQAAMAAAAAAAAUoQAGAAAAAAAAKEIBDAAAAAAAAFCEAhgAAAAAAACgCAUwAAAAAAAAQBEKYAAAAAAAAIAiFMAAAAAAAAAARSiAAQAAAAAAAIpQAAMAAAAAAAAUoQAGAAAAAAAAKEIBDAAAAAAAAFCEAhgAAAAAAACgCAUwAAAAAAAAQBEKYAAAAAAAAIAiFMAAAAAAAAAARSiAAQAAAAAAAIpQAAMAAAAAAAAUoQAGAAAAAAAAKEIBDAAAAAAAAFCEAhgAAAAAAACgCAUwAAAAAAAAQBEKYAAAAAAAAIAiFMAAAAAAAAAARSiAAQAAAAAAAIpQAAMAAAAAAAAUoQAGAAAAAAAAKEIBDAAAAAAAAFCEAhgAAAAAAACgCAUwAAAAAAAAQBEKYAAAAAAAAIAiFMAAAAAAAAAARSiAAQAAAAAAAIpQAAMAAAAAAAAUoQAGAAAAAAAAKEIBDAAAAAAAAFCEAhgAAAAAAACgCAUwAAAAAAAAQBEKYAAAAAAAAIAiFMAAAAAAAAAARSiAAQAAAAAAAIpQAAMAAAAAAAAUoQAGAAAAAAAAKEIBDAAAAAAAAFCEAhgAAAAAAACgCAUwAAAAAAAAQBEKYAAAAAAAAIAiFMAAAAAAAAAARSiAAQAAAAAAAIpQAAMAAAAAAAAUoQAGAAAAAAAAKEIBDAAAAAAAAFCEAhgAAAAAAACgCAUwAAAAAAAAQBEKYAAAAAAAAIAiFMAAAAAAAAAARSiAAQAAAAAAAIpQAAMAAAAAAAAUoQAGAAAAAAAAKEIBDAAAAAAAAFCEAhgAAAAAAACgCAUwAAAAAAAAQBEKYAAAAAAAAIAiFMAAAAAAAAAARSiAAQAAAAAAAIpQAAMAAAAAAAAUoQAGAAAAAAAAKEIBDAAAAAAAAFCEAhgAAAAAAACgCAUwAAAAAAAAQBEKYAAAAAAAAIAiFMAAAAAAAAAARSiAAQAAAAAAAIr4uffff78TEREREREREREREREREZGPfhTAIiIiIiIiIiIiIiIiIiJFogAWERERERERERERERERESkSBbCIiIiIiIiIiIiIiIiISJEogEVEREREREREREREREREikQBLCIiIiIiIiIiIiIiIiJSJApgEREREREREREREREREZEiUQCLiIiIiIiIiIiIiIiIiBSJAlhEREREREREREREREREpEgUwCIiIiIiIiIiIiIiIiIiRaIAFhEREREREREREREREREpEgWwiIiIiIiIiIiIiIiIiEiRKIBFRERERERERERERERERIpEASwiIiIiIiIiIiIiIiIiUiQKYBERERERERERERERERGRIlEAi4iIiIiIrGI+fdM/dpv2/ku3ef9nurtevKZ77s2nup+++3b33vvvTc348SIiIiIiIiIiwyiARUREREREVjE//z+/1f3Jlk90Gx/9m+7Ux/62z5YDn+uee2N/9+777yqARURERERERGRFKVEAv/jiS91/fvb47rXXX5+47Wjnqzfd0l159bUT14+z3Put55hG0nLzrTu6yzZfNXH9sc7Djz7WHXfSqRPXi4iIiHyYSQH8C5/9re5Tt/7ZYgGcbNr3qe6uF69dEwWwdfef5UinxZE+TkRERESkcs7+wgXdN+751sT1Ikc7621eW7MF8FNP7+9L3W3X3TBx2zgfZgH81ttvd9/6zr2LP+dvPf/CCxP3G2e591vL+fJXvtZP15b/3bCx++IFl3SP7d03cd8jSYVpdKQ57ewvdLvvunvi+vsffKj77//dMHH90c7bP/1p9/XtO7pTzzq3+5/jTuo+e/zJ3fkXX9498dTTE/c9FlEAi4iIyHrOLx/3e30J/EvH/07377v/4rASONn+/CUrKoBf+OGL3dXXXt+dcPLp/brlxjPO6cvHN9748cR9l5tK5eXzL/yw27vviYnrl5sjnRarNf556aUfdZdfeXV33IZT+3kiY+zhvHDgmWe7L154aff5E0/pxyn3fOu7hz1+1u3nnn/xYWPGlq987esTz0NEREREamfcJ3zm8yf26493fuOe7r33lh7HPPu973evvvraxPWVc9fd35xYhx5mx+27Jx6zHvLU0we6S67Y0h1/0mn9/HPSqWd1X7v51r7PGN93WsZ93vjn9TavrdkCOBsstmz7Ul9MvfnmTyZuH+bDLID3PfFkt+m8iyauXw/JB/ZFl13ZvfLqq32ee/6FfiCfBe/V19bPQvJh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" data-featherlight="image"><span class="badge badge-gradient-primary">base64 img</span></a>
+        
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>6:38:59 AM</td>
+        <td>
+          Assertion [ValidateBrowserAttribute] PASSED. Expected [Value Should be 'Google' for the 'Title' attribute] and Actual [Google]. Comparison Type [EQUALS]. Validation Type [POSITIVE].
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>6:38:59 AM</td>
+        <td>
+          Test Passed.
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="skip" test-id="3"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">tests.gui.google.B_Search_FlatTest_SHAFT.searchForQueryAndAssertFirstResultTextIsCorrect</p>
+            <p class="text-sm">
+              <span>6:39:00 AM</span> / <span>00:00:00:002</span>
+              <span class="badge skip-bg log float-right">Skip</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-skip">tests.gui.google.B_Search_FlatTest_SHAFT.searchForQueryAndAssertFirstResultTextIsCorrect</h5>
+<span class='badge badge-success'>12.16.2021 6:39:00 AM</span>
+<span class='badge badge-danger'>12.16.2021 6:39:00 AM</span>
+<span class='badge badge-default'>00:00:00:002</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=3</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log skip-bg">Skip</span></td>
+        <td>6:39:00 AM</td>
+        <td>
+          <textarea readonly class="code-block">java.lang.AssertionError: Driver Factory Action [createNewRemoteDriverInstance] failed. With the following test data [Unhandled Error.].
+	at org.testng.Assert.fail(Assert.java:87)
+	at com.shaft.driver.DriverFactoryHelper.failAction(DriverFactoryHelper.java:304)
+	at com.shaft.driver.DriverFactoryHelper.createNewRemoteDriverInstance(DriverFactoryHelper.java:651)
+	at com.shaft.driver.DriverFactoryHelper.getDriver(DriverFactoryHelper.java:818)
+	at com.shaft.driver.DriverFactoryHelper.getDriver(DriverFactoryHelper.java:140)
+	at com.shaft.driver.DriverFactory.getDriver(DriverFactory.java:27)
+	at com.shaft.gui.browser.BrowserFactory.getBrowser(BrowserFactory.java:21)
+	at tests.gui.google.B_Search_FlatTest_SHAFT.beforeMethod(B_Search_FlatTest_SHAFT.java:41)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:62)
+	at org.testng.internal.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:385)
+	at org.testng.internal.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:321)
+	at org.testng.internal.TestInvoker.runConfigMethods(TestInvoker.java:700)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:527)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:136)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.executeMulti(TestNGDirectoryTestSuite.java:193)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:94)
+	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:145)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:428)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
+Caused by: org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Response code 500. Message: unknown error: Chrome failed to start: exited abnormally.
+  (chrome not reachable)
+  (The process started from chrome location /usr/bin/google-chrome is no longer running, so ChromeDriver is assuming that Chrome has crashed.)
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:25:53'
+System info: host: '39f27cc86db7', ip: '172.18.0.3', os.name: 'Linux', os.arch: 'amd64', os.version: '5.11.0-1022-azure', java.version: '1.8.0_252'
+Driver info: driver.version: unknown
+remote stacktrace: #0 0x5610d054e189 <unknown>
+
+Build info: version: '4.0.0', revision: '3a21814679'
+System info: host: 'fv-az121-382', ip: '10.1.0.179', os.name: 'Linux', os.arch: 'amd64', os.version: '5.11.0-1022-azure', java.version: '17.0.1'
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Command: [null, newSession {capabilities=[Capabilities {acceptInsecureCerts: true, browserName: chrome, goog:chromeOptions: {args: [--headless, --window-size=1920,1080, --start-maximized, --enable-automation, --no-sandbox, --disable-infobars, --disable-dev-shm-usage, --disable-browser-side-navi..., --disable-gpu, --remote-debugging-port=9222], extensions: [], prefs: {download.default_directory: /home/runner/work/io.github..., download.prompt_for_download: false, profile.default_content_settings.popups: 0}}, goog:loggingPrefs: org.openqa.selenium.logging..., pageLoadStrategy: normal, platformName: linux, timeouts: {pageLoad: 30000, script: 30000}, unhandledPromptBehavior: accept and notify}], desiredCapabilities=Capabilities {acceptInsecureCerts: true, acceptSslCerts: true, browserName: chrome, goog:chromeOptions: {args: [--headless, --window-size=1920,1080, --start-maximized, --enable-automation, --no-sandbox, --disable-infobars, --disable-dev-shm-usage, --disable-browser-side-navi..., --disable-gpu, --remote-debugging-port=9222], extensions: [], prefs: {download.default_directory: /home/runner/work/io.github..., download.prompt_for_download: false, profile.default_content_settings.popups: 0}}, loggingPrefs: org.openqa.selenium.logging..., pageLoadStrategy: normal, platformName: LINUX, timeouts: {pageLoad: 30000, script: 30000}, unhandledPromptBehavior: accept and notify}}]
+Capabilities {}
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:126)
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:84)
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:62)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:156)
+	at org.openqa.selenium.remote.TracedCommandExecutor.execute(TracedCommandExecutor.java:39)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:559)
+	at org.openqa.selenium.remote.RemoteWebDriver.startSession(RemoteWebDriver.java:246)
+	at org.openqa.selenium.remote.RemoteWebDriver.<init>(RemoteWebDriver.java:168)
+	at org.openqa.selenium.remote.RemoteWebDriver.<init>(RemoteWebDriver.java:146)
+	at com.shaft.driver.DriverFactoryHelper.setValueToRemoteDriverInstance(DriverFactoryHelper.java:668)
+	at com.shaft.driver.DriverFactoryHelper.createNewRemoteDriverInstance(DriverFactoryHelper.java:637)
+	... 42 more
+</textarea>
+          
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="skip" test-id="4"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">tests.gui.google.G_Search_PageObjectModel_ThreadSafe.navigateToGoogleHomeAndAssertGoogleLogoIsDisplayed</p>
+            <p class="text-sm">
+              <span>6:39:00 AM</span> / <span>00:00:00:000</span>
+              <span class="badge skip-bg log float-right">Skip</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-skip">tests.gui.google.G_Search_PageObjectModel_ThreadSafe.navigateToGoogleHomeAndAssertGoogleLogoIsDisplayed</h5>
+<span class='badge badge-success'>12.16.2021 6:39:00 AM</span>
+<span class='badge badge-danger'>12.16.2021 6:39:00 AM</span>
+<span class='badge badge-default'>00:00:00:000</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=4</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log skip-bg">Skip</span></td>
+        <td>6:39:00 AM</td>
+        <td>
+          <textarea readonly class="code-block">java.lang.AssertionError: Couldn't find the desired file. [src/test/resources/testDataFiles/Google/SimpleSearch.xlsx].
+	at org.testng.Assert.fail(Assert.java:99)
+	at com.shaft.tools.io.ExcelFileManager.<init>(ExcelFileManager.java:48)
+	at tests.gui.google.G_Search_PageObjectModel_ThreadSafe.beforeClass(G_Search_PageObjectModel_ThreadSafe.java:45)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:62)
+	at org.testng.internal.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:385)
+	at org.testng.internal.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:321)
+	at org.testng.internal.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:176)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:122)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:136)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.executeMulti(TestNGDirectoryTestSuite.java:193)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:94)
+	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:145)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:428)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
+</textarea>
+          
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="skip" test-id="5"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">tests.gui.google.G_Search_PageObjectModel_ThreadSafe.navigateToGoogleHomeAndAssertPageTitle</p>
+            <p class="text-sm">
+              <span>6:39:00 AM</span> / <span>00:00:00:001</span>
+              <span class="badge skip-bg log float-right">Skip</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-skip">tests.gui.google.G_Search_PageObjectModel_ThreadSafe.navigateToGoogleHomeAndAssertPageTitle</h5>
+<span class='badge badge-success'>12.16.2021 6:39:00 AM</span>
+<span class='badge badge-danger'>12.16.2021 6:39:00 AM</span>
+<span class='badge badge-default'>00:00:00:001</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=5</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log skip-bg">Skip</span></td>
+        <td>6:39:00 AM</td>
+        <td>
+          <textarea readonly class="code-block">java.lang.AssertionError: Couldn't find the desired file. [src/test/resources/testDataFiles/Google/SimpleSearch.xlsx].
+	at org.testng.Assert.fail(Assert.java:99)
+	at com.shaft.tools.io.ExcelFileManager.<init>(ExcelFileManager.java:48)
+	at tests.gui.google.G_Search_PageObjectModel_ThreadSafe.beforeClass(G_Search_PageObjectModel_ThreadSafe.java:45)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:62)
+	at org.testng.internal.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:385)
+	at org.testng.internal.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:321)
+	at org.testng.internal.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:176)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:122)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:136)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.executeMulti(TestNGDirectoryTestSuite.java:193)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:94)
+	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:145)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:428)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
+</textarea>
+          
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="skip" test-id="6"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">tests.gui.google.G_Search_PageObjectModel_ThreadSafe.searchForQueryAndAssertFirstResultTextIsCorrect</p>
+            <p class="text-sm">
+              <span>6:39:00 AM</span> / <span>00:00:00:001</span>
+              <span class="badge skip-bg log float-right">Skip</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-skip">tests.gui.google.G_Search_PageObjectModel_ThreadSafe.searchForQueryAndAssertFirstResultTextIsCorrect</h5>
+<span class='badge badge-success'>12.16.2021 6:39:00 AM</span>
+<span class='badge badge-danger'>12.16.2021 6:39:00 AM</span>
+<span class='badge badge-default'>00:00:00:001</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=6</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log skip-bg">Skip</span></td>
+        <td>6:39:00 AM</td>
+        <td>
+          <textarea readonly class="code-block">java.lang.AssertionError: Couldn't find the desired file. [src/test/resources/testDataFiles/Google/SimpleSearch.xlsx].
+	at org.testng.Assert.fail(Assert.java:99)
+	at com.shaft.tools.io.ExcelFileManager.<init>(ExcelFileManager.java:48)
+	at tests.gui.google.G_Search_PageObjectModel_ThreadSafe.beforeClass(G_Search_PageObjectModel_ThreadSafe.java:45)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:62)
+	at org.testng.internal.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:385)
+	at org.testng.internal.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:321)
+	at org.testng.internal.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:176)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:122)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:136)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.executeMulti(TestNGDirectoryTestSuite.java:193)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:94)
+	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:145)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:428)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
+</textarea>
+          
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="pass" test-id="7"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">tests.gui.google.C_Search_PageObjectModel_Traditional.navigateToGoogleHomeAndAssertGoogleLogoIsDisplayed</p>
+            <p class="text-sm">
+              <span>6:39:01 AM</span> / <span>00:00:00:100</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">tests.gui.google.C_Search_PageObjectModel_Traditional.navigateToGoogleHomeAndAssertGoogleLogoIsDisplayed</h5>
+<span class='badge badge-success'>12.16.2021 6:39:01 AM</span>
+<span class='badge badge-danger'>12.16.2021 6:39:02 AM</span>
+<span class='badge badge-default'>00:00:00:100</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=7</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>6:39:02 AM</td>
+        <td>
+          Element Action [IsElementDisplayed] successfully performed.
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>6:39:02 AM</td>
+        <td>
+          Assertion Passed: Asserting that the Google logo is displayed
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>6:39:02 AM</td>
+        <td>
+          Assertion [ValidateTrue] PASSED. Expected [TRUE] and Actual [TRUE]. Validation Type [POSITIVE].
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>6:39:02 AM</td>
+        <td>
+          Test Passed.
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="pass" test-id="8"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">tests.gui.google.C_Search_PageObjectModel_Traditional.navigateToGoogleHomeAndAssertPageTitle</p>
+            <p class="text-sm">
+              <span>6:39:03 AM</span> / <span>00:00:00:036</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">tests.gui.google.C_Search_PageObjectModel_Traditional.navigateToGoogleHomeAndAssertPageTitle</h5>
+<span class='badge badge-success'>12.16.2021 6:39:03 AM</span>
+<span class='badge badge-danger'>12.16.2021 6:39:03 AM</span>
+<span class='badge badge-default'>00:00:00:036</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=8</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>6:39:03 AM</td>
+        <td>
+          Browser Action [GetCurrentWindowTitle] successfully performed. With the following test data [Google].
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>6:39:03 AM</td>
+        <td>
+          Assertion Passed: Asserting that the page title is Google
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>6:39:03 AM</td>
+        <td>
+          Assertion [ValidateEquals] PASSED. Expected [Google] and Actual [Google]. Comparison Type [EQUALS]. Validation Type [POSITIVE].
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>6:39:03 AM</td>
+        <td>
+          Test Passed.
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="fail" test-id="9"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">tests.gui.google.C_Search_PageObjectModel_Traditional.searchForQueryAndAssertFirstResultTextIsCorrect</p>
+            <p class="text-sm">
+              <span>6:39:04 AM</span> / <span>00:00:02:275</span>
+              <span class="badge fail-bg log float-right">Fail</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-fail">tests.gui.google.C_Search_PageObjectModel_Traditional.searchForQueryAndAssertFirstResultTextIsCorrect</h5>
+<span class='badge badge-success'>12.16.2021 6:39:04 AM</span>
+<span class='badge badge-danger'>12.16.2021 6:39:07 AM</span>
+<span class='badge badge-default'>00:00:02:275</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=9</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>6:39:05 AM</td>
+        <td>
+          Element Action [Type] successfully performed. With the following test data [SHAFT_Engine].
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>6:39:07 AM</td>
+        <td>
+          Element Action [KeyPress] successfully performed. With the following test data [ENTER].
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>6:39:07 AM</td>
+        <td>
+          Element Action [GetText] successfully performed. With the following test data [SHAFT: Unified Test Automation Engine - GitHub].
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>6:39:07 AM</td>
+        <td>
+          Assertion Failed: Asserting that the correct first result is displayed
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>6:39:07 AM</td>
+        <td>
+          Assertion [ValidateEquals] FAILED. Expected [MohabMohie] and Actual [SHAFT: Unified Test Automation Engine - GitHub]. Comparison Type [CONTAINS]. Validation Type [POSITIVE].
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>6:39:07 AM</td>
+        <td>
+          <textarea readonly class="code-block">java.lang.AssertionError: Assertion [ValidateEquals] FAILED. Expected [MohabMohie] and Actual [SHAFT: Unified Test Automation Engine - GitHub]. Comparison Type [CONTAINS]. Validation Type [POSITIVE].
+	at org.testng.Assert.fail(Assert.java:99)
+	at com.shaft.validation.ValidationsHelper.reportValidationState(ValidationsHelper.java:860)
+	at com.shaft.validation.ValidationsHelper.fail(ValidationsHelper.java:588)
+	at com.shaft.validation.ValidationsHelper.validateEquals(ValidationsHelper.java:70)
+	at com.shaft.validation.Assertions.assertEquals(Assertions.java:60)
+	at tests.gui.google.C_Search_PageObjectModel_Traditional.searchForQueryAndAssertFirstResultTextIsCorrect(C_Search_PageObjectModel_Traditional.java:36)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:136)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.executeMulti(TestNGDirectoryTestSuite.java:193)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:94)
+	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:145)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:428)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
+</textarea>
+          
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="skip" test-id="10"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">tests.gui.google.F_Search_PageObjectModel_Fluent.navigateToGoogleHomeAndAssertGoogleLogoIsDisplayed</p>
+            <p class="text-sm">
+              <span>6:39:07 AM</span> / <span>00:00:00:000</span>
+              <span class="badge skip-bg log float-right">Skip</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-skip">tests.gui.google.F_Search_PageObjectModel_Fluent.navigateToGoogleHomeAndAssertGoogleLogoIsDisplayed</h5>
+<span class='badge badge-success'>12.16.2021 6:39:07 AM</span>
+<span class='badge badge-danger'>12.16.2021 6:39:07 AM</span>
+<span class='badge badge-default'>00:00:00:000</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=10</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log skip-bg">Skip</span></td>
+        <td>6:39:07 AM</td>
+        <td>
+          <textarea readonly class="code-block">java.lang.AssertionError: Couldn't find the desired file. [src/test/resources/testDataFiles/Google/SimpleSearch.xlsx].
+	at org.testng.Assert.fail(Assert.java:99)
+	at com.shaft.tools.io.ExcelFileManager.<init>(ExcelFileManager.java:48)
+	at tests.gui.google.F_Search_PageObjectModel_Fluent.beforeClass(F_Search_PageObjectModel_Fluent.java:44)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:62)
+	at org.testng.internal.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:385)
+	at org.testng.internal.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:321)
+	at org.testng.internal.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:176)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:122)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:136)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.executeMulti(TestNGDirectoryTestSuite.java:193)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:94)
+	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:145)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:428)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
+</textarea>
+          
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="skip" test-id="11"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">tests.gui.google.F_Search_PageObjectModel_Fluent.navigateToGoogleHomeAndAssertPageTitle</p>
+            <p class="text-sm">
+              <span>6:39:07 AM</span> / <span>00:00:00:000</span>
+              <span class="badge skip-bg log float-right">Skip</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-skip">tests.gui.google.F_Search_PageObjectModel_Fluent.navigateToGoogleHomeAndAssertPageTitle</h5>
+<span class='badge badge-success'>12.16.2021 6:39:07 AM</span>
+<span class='badge badge-danger'>12.16.2021 6:39:07 AM</span>
+<span class='badge badge-default'>00:00:00:000</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=11</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log skip-bg">Skip</span></td>
+        <td>6:39:07 AM</td>
+        <td>
+          <textarea readonly class="code-block">java.lang.AssertionError: Couldn't find the desired file. [src/test/resources/testDataFiles/Google/SimpleSearch.xlsx].
+	at org.testng.Assert.fail(Assert.java:99)
+	at com.shaft.tools.io.ExcelFileManager.<init>(ExcelFileManager.java:48)
+	at tests.gui.google.F_Search_PageObjectModel_Fluent.beforeClass(F_Search_PageObjectModel_Fluent.java:44)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:62)
+	at org.testng.internal.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:385)
+	at org.testng.internal.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:321)
+	at org.testng.internal.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:176)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:122)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:136)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.executeMulti(TestNGDirectoryTestSuite.java:193)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:94)
+	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:145)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:428)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
+</textarea>
+          
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="skip" test-id="12"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">tests.gui.google.F_Search_PageObjectModel_Fluent.searchForQueryAndAssertFirstResultTextIsCorrect</p>
+            <p class="text-sm">
+              <span>6:39:07 AM</span> / <span>00:00:00:000</span>
+              <span class="badge skip-bg log float-right">Skip</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-skip">tests.gui.google.F_Search_PageObjectModel_Fluent.searchForQueryAndAssertFirstResultTextIsCorrect</h5>
+<span class='badge badge-success'>12.16.2021 6:39:07 AM</span>
+<span class='badge badge-danger'>12.16.2021 6:39:07 AM</span>
+<span class='badge badge-default'>00:00:00:000</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=12</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log skip-bg">Skip</span></td>
+        <td>6:39:07 AM</td>
+        <td>
+          <textarea readonly class="code-block">java.lang.AssertionError: Couldn't find the desired file. [src/test/resources/testDataFiles/Google/SimpleSearch.xlsx].
+	at org.testng.Assert.fail(Assert.java:99)
+	at com.shaft.tools.io.ExcelFileManager.<init>(ExcelFileManager.java:48)
+	at tests.gui.google.F_Search_PageObjectModel_Fluent.beforeClass(F_Search_PageObjectModel_Fluent.java:44)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:62)
+	at org.testng.internal.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:385)
+	at org.testng.internal.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:321)
+	at org.testng.internal.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:176)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:122)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:136)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.executeMulti(TestNGDirectoryTestSuite.java:193)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:94)
+	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:145)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:428)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
+</textarea>
+          
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="skip" test-id="13"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">tests.gui.google.E_Search_PageObjectModel_Traditional_SHAFTAssertions.navigateToGoogleHomeAndAssertGoogleLogoIsDisplayed</p>
+            <p class="text-sm">
+              <span>6:39:07 AM</span> / <span>00:00:00:000</span>
+              <span class="badge skip-bg log float-right">Skip</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-skip">tests.gui.google.E_Search_PageObjectModel_Traditional_SHAFTAssertions.navigateToGoogleHomeAndAssertGoogleLogoIsDisplayed</h5>
+<span class='badge badge-success'>12.16.2021 6:39:07 AM</span>
+<span class='badge badge-danger'>12.16.2021 6:39:07 AM</span>
+<span class='badge badge-default'>00:00:00:000</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=13</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log skip-bg">Skip</span></td>
+        <td>6:39:07 AM</td>
+        <td>
+          <textarea readonly class="code-block">java.lang.AssertionError: Couldn't find the desired file. [src/test/resources/testDataFiles/Google/SimpleSearch.xlsx].
+	at org.testng.Assert.fail(Assert.java:99)
+	at com.shaft.tools.io.ExcelFileManager.<init>(ExcelFileManager.java:48)
+	at tests.gui.google.E_Search_PageObjectModel_Traditional_SHAFTAssertions.beforeClass(E_Search_PageObjectModel_Traditional_SHAFTAssertions.java:47)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:62)
+	at org.testng.internal.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:385)
+	at org.testng.internal.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:321)
+	at org.testng.internal.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:176)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:122)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:136)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.executeMulti(TestNGDirectoryTestSuite.java:193)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:94)
+	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:145)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:428)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
+</textarea>
+          
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="skip" test-id="14"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">tests.gui.google.E_Search_PageObjectModel_Traditional_SHAFTAssertions.navigateToGoogleHomeAndAssertPageTitle</p>
+            <p class="text-sm">
+              <span>6:39:07 AM</span> / <span>00:00:00:001</span>
+              <span class="badge skip-bg log float-right">Skip</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-skip">tests.gui.google.E_Search_PageObjectModel_Traditional_SHAFTAssertions.navigateToGoogleHomeAndAssertPageTitle</h5>
+<span class='badge badge-success'>12.16.2021 6:39:07 AM</span>
+<span class='badge badge-danger'>12.16.2021 6:39:07 AM</span>
+<span class='badge badge-default'>00:00:00:001</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=14</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log skip-bg">Skip</span></td>
+        <td>6:39:07 AM</td>
+        <td>
+          <textarea readonly class="code-block">java.lang.AssertionError: Couldn't find the desired file. [src/test/resources/testDataFiles/Google/SimpleSearch.xlsx].
+	at org.testng.Assert.fail(Assert.java:99)
+	at com.shaft.tools.io.ExcelFileManager.<init>(ExcelFileManager.java:48)
+	at tests.gui.google.E_Search_PageObjectModel_Traditional_SHAFTAssertions.beforeClass(E_Search_PageObjectModel_Traditional_SHAFTAssertions.java:47)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:62)
+	at org.testng.internal.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:385)
+	at org.testng.internal.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:321)
+	at org.testng.internal.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:176)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:122)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:136)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.executeMulti(TestNGDirectoryTestSuite.java:193)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:94)
+	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:145)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:428)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
+</textarea>
+          
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="skip" test-id="15"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">tests.gui.google.E_Search_PageObjectModel_Traditional_SHAFTAssertions.searchForQueryAndAssertFirstResultTextIsCorrect</p>
+            <p class="text-sm">
+              <span>6:39:07 AM</span> / <span>00:00:00:001</span>
+              <span class="badge skip-bg log float-right">Skip</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-skip">tests.gui.google.E_Search_PageObjectModel_Traditional_SHAFTAssertions.searchForQueryAndAssertFirstResultTextIsCorrect</h5>
+<span class='badge badge-success'>12.16.2021 6:39:07 AM</span>
+<span class='badge badge-danger'>12.16.2021 6:39:07 AM</span>
+<span class='badge badge-default'>00:00:00:001</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=15</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log skip-bg">Skip</span></td>
+        <td>6:39:07 AM</td>
+        <td>
+          <textarea readonly class="code-block">java.lang.AssertionError: Couldn't find the desired file. [src/test/resources/testDataFiles/Google/SimpleSearch.xlsx].
+	at org.testng.Assert.fail(Assert.java:99)
+	at com.shaft.tools.io.ExcelFileManager.<init>(ExcelFileManager.java:48)
+	at tests.gui.google.E_Search_PageObjectModel_Traditional_SHAFTAssertions.beforeClass(E_Search_PageObjectModel_Traditional_SHAFTAssertions.java:47)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:62)
+	at org.testng.internal.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:385)
+	at org.testng.internal.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:321)
+	at org.testng.internal.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:176)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:122)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:136)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.executeMulti(TestNGDirectoryTestSuite.java:193)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:94)
+	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:145)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:428)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
+</textarea>
+          
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="skip" test-id="16"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">tests.gui.google.D_Search_PageObjectModel_Traditional_DataDriven.navigateToGoogleHomeAndAssertGoogleLogoIsDisplayed</p>
+            <p class="text-sm">
+              <span>6:39:07 AM</span> / <span>00:00:00:001</span>
+              <span class="badge skip-bg log float-right">Skip</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-skip">tests.gui.google.D_Search_PageObjectModel_Traditional_DataDriven.navigateToGoogleHomeAndAssertGoogleLogoIsDisplayed</h5>
+<span class='badge badge-success'>12.16.2021 6:39:07 AM</span>
+<span class='badge badge-danger'>12.16.2021 6:39:07 AM</span>
+<span class='badge badge-default'>00:00:00:001</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=16</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log skip-bg">Skip</span></td>
+        <td>6:39:07 AM</td>
+        <td>
+          <textarea readonly class="code-block">java.lang.AssertionError: Couldn't find the desired file. [src/test/resources/testDataFiles/Google/SimpleSearch.xlsx].
+	at org.testng.Assert.fail(Assert.java:99)
+	at com.shaft.tools.io.ExcelFileManager.<init>(ExcelFileManager.java:48)
+	at tests.gui.google.D_Search_PageObjectModel_Traditional_DataDriven.beforeClass(D_Search_PageObjectModel_Traditional_DataDriven.java:46)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:62)
+	at org.testng.internal.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:385)
+	at org.testng.internal.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:321)
+	at org.testng.internal.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:176)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:122)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:136)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.executeMulti(TestNGDirectoryTestSuite.java:193)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:94)
+	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:145)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:428)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
+</textarea>
+          
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="skip" test-id="17"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">tests.gui.google.D_Search_PageObjectModel_Traditional_DataDriven.navigateToGoogleHomeAndAssertPageTitle</p>
+            <p class="text-sm">
+              <span>6:39:07 AM</span> / <span>00:00:00:000</span>
+              <span class="badge skip-bg log float-right">Skip</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-skip">tests.gui.google.D_Search_PageObjectModel_Traditional_DataDriven.navigateToGoogleHomeAndAssertPageTitle</h5>
+<span class='badge badge-success'>12.16.2021 6:39:07 AM</span>
+<span class='badge badge-danger'>12.16.2021 6:39:07 AM</span>
+<span class='badge badge-default'>00:00:00:000</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=17</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log skip-bg">Skip</span></td>
+        <td>6:39:07 AM</td>
+        <td>
+          <textarea readonly class="code-block">java.lang.AssertionError: Couldn't find the desired file. [src/test/resources/testDataFiles/Google/SimpleSearch.xlsx].
+	at org.testng.Assert.fail(Assert.java:99)
+	at com.shaft.tools.io.ExcelFileManager.<init>(ExcelFileManager.java:48)
+	at tests.gui.google.D_Search_PageObjectModel_Traditional_DataDriven.beforeClass(D_Search_PageObjectModel_Traditional_DataDriven.java:46)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:62)
+	at org.testng.internal.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:385)
+	at org.testng.internal.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:321)
+	at org.testng.internal.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:176)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:122)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:136)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.executeMulti(TestNGDirectoryTestSuite.java:193)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:94)
+	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:145)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:428)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
+</textarea>
+          
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="skip" test-id="18"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">tests.gui.google.D_Search_PageObjectModel_Traditional_DataDriven.searchForQueryAndAssertFirstResultTextIsCorrect</p>
+            <p class="text-sm">
+              <span>6:39:07 AM</span> / <span>00:00:00:000</span>
+              <span class="badge skip-bg log float-right">Skip</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-skip">tests.gui.google.D_Search_PageObjectModel_Traditional_DataDriven.searchForQueryAndAssertFirstResultTextIsCorrect</h5>
+<span class='badge badge-success'>12.16.2021 6:39:07 AM</span>
+<span class='badge badge-danger'>12.16.2021 6:39:07 AM</span>
+<span class='badge badge-default'>00:00:00:000</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=18</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log skip-bg">Skip</span></td>
+        <td>6:39:07 AM</td>
+        <td>
+          <textarea readonly class="code-block">java.lang.AssertionError: Couldn't find the desired file. [src/test/resources/testDataFiles/Google/SimpleSearch.xlsx].
+	at org.testng.Assert.fail(Assert.java:99)
+	at com.shaft.tools.io.ExcelFileManager.<init>(ExcelFileManager.java:48)
+	at tests.gui.google.D_Search_PageObjectModel_Traditional_DataDriven.beforeClass(D_Search_PageObjectModel_Traditional_DataDriven.java:46)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:62)
+	at org.testng.internal.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:385)
+	at org.testng.internal.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:321)
+	at org.testng.internal.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:176)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:122)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:136)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.executeMulti(TestNGDirectoryTestSuite.java:193)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:94)
+	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:145)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:428)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
+</textarea>
+          
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="skip" test-id="19"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">tests.gui.google.A_Search_FlatTest_NativeSeleniumWebDriver.navigateToGoogleHomeAndAssertGoogleLogoIsDisplayed</p>
+            <p class="text-sm">
+              <span>6:39:31 AM</span> / <span>00:00:00:027</span>
+              <span class="badge skip-bg log float-right">Skip</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-skip">tests.gui.google.A_Search_FlatTest_NativeSeleniumWebDriver.navigateToGoogleHomeAndAssertGoogleLogoIsDisplayed</h5>
+<span class='badge badge-success'>12.16.2021 6:39:31 AM</span>
+<span class='badge badge-danger'>12.16.2021 6:39:31 AM</span>
+<span class='badge badge-default'>00:00:00:027</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=19</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log skip-bg">Skip</span></td>
+        <td>6:39:31 AM</td>
+        <td>
+          <textarea readonly class="code-block">org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Response code 500. Message: unknown error: Chrome failed to start: crashed.
+  (unknown error: DevToolsActivePort file doesn't exist)
+  (The process started from chrome location /usr/bin/google-chrome is no longer running, so ChromeDriver is assuming that Chrome has crashed.)
+Build info: version: '4.0.0', revision: '3a21814679'
+System info: host: 'fv-az121-382', ip: '10.1.0.179', os.name: 'Linux', os.arch: 'amd64', os.version: '5.11.0-1022-azure', java.version: '17.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [null, newSession {capabilities=[Capabilities {browserName: chrome, goog:chromeOptions: {args: [], extensions: []}}], desiredCapabilities=Capabilities {browserName: chrome, goog:chromeOptions: {args: [], extensions: []}}}]
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:126)
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:84)
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:62)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:156)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:164)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:139)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:559)
+	at org.openqa.selenium.remote.RemoteWebDriver.startSession(RemoteWebDriver.java:246)
+	at org.openqa.selenium.remote.RemoteWebDriver.<init>(RemoteWebDriver.java:168)
+	at org.openqa.selenium.chromium.ChromiumDriver.<init>(ChromiumDriver.java:108)
+	at org.openqa.selenium.chrome.ChromeDriver.<init>(ChromeDriver.java:104)
+	at org.openqa.selenium.chrome.ChromeDriver.<init>(ChromeDriver.java:91)
+	at org.openqa.selenium.chrome.ChromeDriver.<init>(ChromeDriver.java:46)
+	at tests.gui.google.A_Search_FlatTest_NativeSeleniumWebDriver.beforeMethod(A_Search_FlatTest_NativeSeleniumWebDriver.java:46)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:62)
+	at org.testng.internal.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:385)
+	at org.testng.internal.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:321)
+	at org.testng.internal.TestInvoker.runConfigMethods(TestInvoker.java:700)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:527)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:136)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.executeMulti(TestNGDirectoryTestSuite.java:193)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:94)
+	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:145)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:428)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
+</textarea>
+          
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="skip" test-id="20"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">tests.gui.google.A_Search_FlatTest_NativeSeleniumWebDriver.navigateToGoogleHomeAndAssertPageTitle</p>
+            <p class="text-sm">
+              <span>6:39:31 AM</span> / <span>00:00:00:001</span>
+              <span class="badge skip-bg log float-right">Skip</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-skip">tests.gui.google.A_Search_FlatTest_NativeSeleniumWebDriver.navigateToGoogleHomeAndAssertPageTitle</h5>
+<span class='badge badge-success'>12.16.2021 6:39:31 AM</span>
+<span class='badge badge-danger'>12.16.2021 6:39:31 AM</span>
+<span class='badge badge-default'>00:00:00:001</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=20</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log skip-bg">Skip</span></td>
+        <td>6:39:31 AM</td>
+        <td>
+          <textarea readonly class="code-block">org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Response code 500. Message: unknown error: Chrome failed to start: crashed.
+  (unknown error: DevToolsActivePort file doesn't exist)
+  (The process started from chrome location /usr/bin/google-chrome is no longer running, so ChromeDriver is assuming that Chrome has crashed.)
+Build info: version: '4.0.0', revision: '3a21814679'
+System info: host: 'fv-az121-382', ip: '10.1.0.179', os.name: 'Linux', os.arch: 'amd64', os.version: '5.11.0-1022-azure', java.version: '17.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [null, newSession {capabilities=[Capabilities {browserName: chrome, goog:chromeOptions: {args: [], extensions: []}}], desiredCapabilities=Capabilities {browserName: chrome, goog:chromeOptions: {args: [], extensions: []}}}]
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:126)
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:84)
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:62)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:156)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:164)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:139)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:559)
+	at org.openqa.selenium.remote.RemoteWebDriver.startSession(RemoteWebDriver.java:246)
+	at org.openqa.selenium.remote.RemoteWebDriver.<init>(RemoteWebDriver.java:168)
+	at org.openqa.selenium.chromium.ChromiumDriver.<init>(ChromiumDriver.java:108)
+	at org.openqa.selenium.chrome.ChromeDriver.<init>(ChromeDriver.java:104)
+	at org.openqa.selenium.chrome.ChromeDriver.<init>(ChromeDriver.java:91)
+	at org.openqa.selenium.chrome.ChromeDriver.<init>(ChromeDriver.java:46)
+	at tests.gui.google.A_Search_FlatTest_NativeSeleniumWebDriver.beforeMethod(A_Search_FlatTest_NativeSeleniumWebDriver.java:46)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:62)
+	at org.testng.internal.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:385)
+	at org.testng.internal.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:321)
+	at org.testng.internal.TestInvoker.runConfigMethods(TestInvoker.java:700)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:527)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:136)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.executeMulti(TestNGDirectoryTestSuite.java:193)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:94)
+	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:145)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:428)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
+</textarea>
+          
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="skip" test-id="21"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">tests.gui.google.A_Search_FlatTest_NativeSeleniumWebDriver.searchForQueryAndAssertFirstResultTextIsCorrect</p>
+            <p class="text-sm">
+              <span>6:39:31 AM</span> / <span>00:00:00:000</span>
+              <span class="badge skip-bg log float-right">Skip</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-skip">tests.gui.google.A_Search_FlatTest_NativeSeleniumWebDriver.searchForQueryAndAssertFirstResultTextIsCorrect</h5>
+<span class='badge badge-success'>12.16.2021 6:39:31 AM</span>
+<span class='badge badge-danger'>12.16.2021 6:39:31 AM</span>
+<span class='badge badge-default'>00:00:00:000</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=21</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log skip-bg">Skip</span></td>
+        <td>6:39:31 AM</td>
+        <td>
+          <textarea readonly class="code-block">org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Response code 500. Message: unknown error: Chrome failed to start: crashed.
+  (unknown error: DevToolsActivePort file doesn't exist)
+  (The process started from chrome location /usr/bin/google-chrome is no longer running, so ChromeDriver is assuming that Chrome has crashed.)
+Build info: version: '4.0.0', revision: '3a21814679'
+System info: host: 'fv-az121-382', ip: '10.1.0.179', os.name: 'Linux', os.arch: 'amd64', os.version: '5.11.0-1022-azure', java.version: '17.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [null, newSession {capabilities=[Capabilities {browserName: chrome, goog:chromeOptions: {args: [], extensions: []}}], desiredCapabilities=Capabilities {browserName: chrome, goog:chromeOptions: {args: [], extensions: []}}}]
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:126)
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:84)
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:62)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:156)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:164)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:139)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:559)
+	at org.openqa.selenium.remote.RemoteWebDriver.startSession(RemoteWebDriver.java:246)
+	at org.openqa.selenium.remote.RemoteWebDriver.<init>(RemoteWebDriver.java:168)
+	at org.openqa.selenium.chromium.ChromiumDriver.<init>(ChromiumDriver.java:108)
+	at org.openqa.selenium.chrome.ChromeDriver.<init>(ChromeDriver.java:104)
+	at org.openqa.selenium.chrome.ChromeDriver.<init>(ChromeDriver.java:91)
+	at org.openqa.selenium.chrome.ChromeDriver.<init>(ChromeDriver.java:46)
+	at tests.gui.google.A_Search_FlatTest_NativeSeleniumWebDriver.beforeMethod(A_Search_FlatTest_NativeSeleniumWebDriver.java:46)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:62)
+	at org.testng.internal.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:385)
+	at org.testng.internal.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:321)
+	at org.testng.internal.TestInvoker.runConfigMethods(TestInvoker.java:700)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:527)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:136)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.executeMulti(TestNGDirectoryTestSuite.java:193)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:94)
+	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:145)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:428)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
+</textarea>
+          
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="pass" test-id="22"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">tests.api.users.UserData.validateUserEmail</p>
+            <p class="text-sm">
+              <span>6:39:31 AM</span> / <span>00:00:03:253</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">tests.api.users.UserData.validateUserEmail</h5>
+<span class='badge badge-success'>12.16.2021 6:39:31 AM</span>
+<span class='badge badge-danger'>12.16.2021 6:39:34 AM</span>
+<span class='badge badge-default'>00:00:03:253</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=22</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>6:39:33 AM</td>
+        <td>
+          Assertion Passed: Evaluating the actual response status code against the expected one...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>6:39:33 AM</td>
+        <td>
+          Assertion [ValidateComparativeRelation] PASSED. Expected [200] and Actual [200]. Comparison Type [EQUALS]. Validation Type [POSITIVE].
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>6:39:34 AM</td>
+        <td>
+          API Action [PerformRequest] successfully performed. With the following test data [Request Type: "GET" | Target Status Code: "200" | Service URL: "https://jsonplaceholder.typicode.com/users" | Content Type: "*/*" | Response Time: "580ms"].
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>6:39:34 AM</td>
+        <td>
+           <div class='json-tree' id='code-block-json-0'></div>
+ <script>
+  function jsonTreeCreate0() { 
+   document.getElementById('code-block-json-0').innerHTML = JSONTree.create([
+  {
+    "website": "hildegard.org",
+    "address": {
+      "zipcode": "92998-3874",
+      "geo": {
+        "lng": "81.1496",
+        "lat": "-37.3159"
+      },
+      "suite": "Apt. 556",
+      "city": "Gwenborough",
+      "street": "Kulas Light"
+    },
+    "phone": "1-770-736-8031 x56442",
+    "name": "Leanne Graham",
+    "company": {
+      "bs": "harness real-time e-markets",
+      "catchPhrase": "Multi-layered client-server neural-net",
+      "name": "Romaguera-Crona"
+    },
+    "id": 1,
+    "email": "Sincere@april.biz",
+    "username": "Bret"
+  },
+  {
+    "website": "anastasia.net",
+    "address": {
+      "zipcode": "90566-7771",
+      "geo": {
+        "lng": "-34.4618",
+        "lat": "-43.9509"
+      },
+      "suite": "Suite 879",
+      "city": "Wisokyburgh",
+      "street": "Victor Plains"
+    },
+    "phone": "010-692-6593 x09125",
+    "name": "Ervin Howell",
+    "company": {
+      "bs": "synergize scalable supply-chains",
+      "catchPhrase": "Proactive didactic contingency",
+      "name": "Deckow-Crist"
+    },
+    "id": 2,
+    "email": "Shanna@melissa.tv",
+    "username": "Antonette"
+  },
+  {
+    "website": "ramiro.info",
+    "address": {
+      "zipcode": "59590-4157",
+      "geo": {
+        "lng": "-47.0653",
+        "lat": "-68.6102"
+      },
+      "suite": "Suite 847",
+      "city": "McKenziehaven",
+      "street": "Douglas Extension"
+    },
+    "phone": "1-463-123-4447",
+    "name": "Clementine Bauch",
+    "company": {
+      "bs": "e-enable strategic applications",
+      "catchPhrase": "Face to face bifurcated interface",
+      "name": "Romaguera-Jacobson"
+    },
+    "id": 3,
+    "email": "Nathan@yesenia.net",
+    "username": "Samantha"
+  },
+  {
+    "website": "kale.biz",
+    "address": {
+      "zipcode": "53919-4257",
+      "geo": {
+        "lng": "-164.2990",
+        "lat": "29.4572"
+      },
+      "suite": "Apt. 692",
+      "city": "South Elvis",
+      "street": "Hoeger Mall"
+    },
+    "phone": "493-170-9623 x156",
+    "name": "Patricia Lebsack",
+    "company": {
+      "bs": "transition cutting-edge web services",
+      "catchPhrase": "Multi-tiered zero tolerance productivity",
+      "name": "Robel-Corkery"
+    },
+    "id": 4,
+    "email": "Julianne.OConner@kory.org",
+    "username": "Karianne"
+  },
+  {
+    "website": "demarco.info",
+    "address": {
+      "zipcode": "33263",
+      "geo": {
+        "lng": "62.5342",
+        "lat": "-31.8129"
+      },
+      "suite": "Suite 351",
+      "city": "Roscoeview",
+      "street": "Skiles Walks"
+    },
+    "phone": "(254)954-1289",
+    "name": "Chelsey Dietrich",
+    "company": {
+      "bs": "revolutionize end-to-end systems",
+      "catchPhrase": "User-centric fault-tolerant solution",
+      "name": "Keebler LLC"
+    },
+    "id": 5,
+    "email": "Lucio_Hettinger@annie.ca",
+    "username": "Kamren"
+  },
+  {
+    "website": "ola.org",
+    "address": {
+      "zipcode": "23505-1337",
+      "geo": {
+        "lng": "71.7478",
+        "lat": "-71.4197"
+      },
+      "suite": "Apt. 950",
+      "city": "South Christy",
+      "street": "Norberto Crossing"
+    },
+    "phone": "1-477-935-8478 x6430",
+    "name": "Mrs. Dennis Schulist",
+    "company": {
+      "bs": "e-enable innovative applications",
+      "catchPhrase": "Synchronised bottom-line interface",
+      "name": "Considine-Lockman"
+    },
+    "id": 6,
+    "email": "Karley_Dach@jasper.info",
+    "username": "Leopoldo_Corkery"
+  },
+  {
+    "website": "elvis.io",
+    "address": {
+      "zipcode": "58804-1099",
+      "geo": {
+        "lng": "21.8984",
+        "lat": "24.8918"
+      },
+      "suite": "Suite 280",
+      "city": "Howemouth",
+      "street": "Rex Trail"
+    },
+    "phone": "210.067.6132",
+    "name": "Kurtis Weissnat",
+    "company": {
+      "bs": "generate enterprise e-tailers",
+      "catchPhrase": "Configurable multimedia task-force",
+      "name": "Johns Group"
+    },
+    "id": 7,
+    "email": "Telly.Hoeger@billy.biz",
+    "username": "Elwyn.Skiles"
+  },
+  {
+    "website": "jacynthe.com",
+    "address": {
+      "zipcode": "45169",
+      "geo": {
+        "lng": "-120.7677",
+        "lat": "-14.3990"
+      },
+      "suite": "Suite 729",
+      "city": "Aliyaview",
+      "street": "Ellsworth Summit"
+    },
+    "phone": "586.493.6943 x140",
+    "name": "Nicholas Runolfsdottir V",
+    "company": {
+      "bs": "e-enable extensible e-tailers",
+      "catchPhrase": "Implemented secondary concept",
+      "name": "Abernathy Group"
+    },
+    "id": 8,
+    "email": "Sherwood@rosamond.me",
+    "username": "Maxime_Nienow"
+  },
+  {
+    "website": "conrad.com",
+    "address": {
+      "zipcode": "76495-3109",
+      "geo": {
+        "lng": "-168.8889",
+        "lat": "24.6463"
+      },
+      "suite": "Suite 449",
+      "city": "Bartholomebury",
+      "street": "Dayna Park"
+    },
+    "phone": "(775)976-6794 x41206",
+    "name": "Glenna Reichert",
+    "company": {
+      "bs": "aggregate real-time technologies",
+      "catchPhrase": "Switchable contextually-based project",
+      "name": "Yost and Sons"
+    },
+    "id": 9,
+    "email": "Chaim_McDermott@dana.io",
+    "username": "Delphine"
+  },
+  {
+    "website": "ambrose.net",
+    "address": {
+      "zipcode": "31428-2261",
+      "geo": {
+        "lng": "57.2232",
+        "lat": "-38.2386"
+      },
+      "suite": "Suite 198",
+      "city": "Lebsackbury",
+      "street": "Kattie Turnpike"
+    },
+    "phone": "024-648-3804",
+    "name": "Clementina DuBuque",
+    "company": {
+      "bs": "target end-to-end models",
+      "catchPhrase": "Centralized empowering task-force",
+      "name": "Hoeger LLC"
+    },
+    "id": 10,
+    "email": "Rey.Padberg@karina.biz",
+    "username": "Moriah.Stanton"
+  }
+]); 
+  }
+  jsonTreeCreate0();
+ </script>
+
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>6:39:34 AM</td>
+        <td>
+          Assertion [ValidateEquals] PASSED. Expected and Actual values are attached. Comparison Type [CONTAINS]. Validation Type [POSITIVE].
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>6:39:34 AM</td>
+        <td>
+          Assertion [ValidateEquals] PASSED. Expected [Sincere@april.biz] and Actual [Sincere@april.biz]. Comparison Type [EQUALS]. Validation Type [POSITIVE].
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>6:39:34 AM</td>
+        <td>
+          Test Passed.
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="pass" test-id="23"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">tests.cli.demo.cliTest.sampleTestCase</p>
+            <p class="text-sm">
+              <span>6:39:34 AM</span> / <span>00:00:00:009</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">tests.cli.demo.cliTest.sampleTestCase</h5>
+<span class='badge badge-success'>12.16.2021 6:39:34 AM</span>
+<span class='badge badge-danger'>12.16.2021 6:39:34 AM</span>
+<span class='badge badge-default'>00:00:00:009</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=23</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>6:39:34 AM</td>
+        <td>
+          Terminal Action [PerformTerminalCommands] successfully performed. With the following test data [Host Name: "localHost" | Command: "ls" | Exit Status: "0"].
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>6:39:34 AM</td>
+        <td>
+          Assertion Passed: Demoing local terminal actions
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>6:39:34 AM</td>
+        <td>
+          Assertion [ValidateEquals] PASSED. Expected [pom.xml] and Actual [LICENSE
+README.md
+allure-results
+docker-compose_native.yml
+docker-compose_zalenium.yml
+extent-reports
+pom.xml
+readMeImgs
+src
+target]. Comparison Type [CONTAINS]. Validation Type [POSITIVE].
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>6:39:34 AM</td>
+        <td>
+          Test Passed.
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+<div class="test-content scrollable">
+<div class="test-content-tools">
+<ul><li><a class="back-to-test" href="#"><i class="fa fa-arrow-left"></i></a></li></ul>
+</div>
+<div class="test-content-detail"><div class="detail-body"></div></div>
+</div></div>
+<div class="test-wrapper row view exception-view attributes-view">
+<div class="test-list">
+<div class="test-list-tools">
+<ul class="tools pull-left"><li><a href=""><span class="font-size-14">Exception</span></a></li></ul>
+<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">2</span></a></li></ul>
+</div>
+<div class="test-list-wrapper scrollable">
+<ul class="test-list-item">
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log badge-danger'>1</span>
+<span class='badge log badge-skip'>13</span>
+</span>
+<p class="name">java.lang.AssertionError</p>
+<p class="duration text-sm">14 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>java.lang.AssertionError</h4>
+<span status="fail" class='badge log badge-danger'>1 failed</span>
+<span status="skip" class='badge log badge-skip'>13 skipped</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="skip">
+<td><span class="badge log skip-bg">Skip</span></td>
+<td>06:39:00 AM</td>
+<td>
+<a href="#" class="linked" test-id='3' id='3'>tests.gui.google.B_Search_FlatTest_SHAFT.searchForQueryAndAssertFirstResultTextIsCorrect</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="skip">
+<td><span class="badge log skip-bg">Skip</span></td>
+<td>06:39:00 AM</td>
+<td>
+<a href="#" class="linked" test-id='4' id='4'>tests.gui.google.G_Search_PageObjectModel_ThreadSafe.navigateToGoogleHomeAndAssertGoogleLogoIsDisplayed</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="skip">
+<td><span class="badge log skip-bg">Skip</span></td>
+<td>06:39:00 AM</td>
+<td>
+<a href="#" class="linked" test-id='5' id='5'>tests.gui.google.G_Search_PageObjectModel_ThreadSafe.navigateToGoogleHomeAndAssertPageTitle</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="skip">
+<td><span class="badge log skip-bg">Skip</span></td>
+<td>06:39:00 AM</td>
+<td>
+<a href="#" class="linked" test-id='6' id='6'>tests.gui.google.G_Search_PageObjectModel_ThreadSafe.searchForQueryAndAssertFirstResultTextIsCorrect</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>06:39:04 AM</td>
+<td>
+<a href="#" class="linked" test-id='9' id='9'>tests.gui.google.C_Search_PageObjectModel_Traditional.searchForQueryAndAssertFirstResultTextIsCorrect</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="skip">
+<td><span class="badge log skip-bg">Skip</span></td>
+<td>06:39:07 AM</td>
+<td>
+<a href="#" class="linked" test-id='10' id='10'>tests.gui.google.F_Search_PageObjectModel_Fluent.navigateToGoogleHomeAndAssertGoogleLogoIsDisplayed</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="skip">
+<td><span class="badge log skip-bg">Skip</span></td>
+<td>06:39:07 AM</td>
+<td>
+<a href="#" class="linked" test-id='11' id='11'>tests.gui.google.F_Search_PageObjectModel_Fluent.navigateToGoogleHomeAndAssertPageTitle</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="skip">
+<td><span class="badge log skip-bg">Skip</span></td>
+<td>06:39:07 AM</td>
+<td>
+<a href="#" class="linked" test-id='12' id='12'>tests.gui.google.F_Search_PageObjectModel_Fluent.searchForQueryAndAssertFirstResultTextIsCorrect</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="skip">
+<td><span class="badge log skip-bg">Skip</span></td>
+<td>06:39:07 AM</td>
+<td>
+<a href="#" class="linked" test-id='13' id='13'>tests.gui.google.E_Search_PageObjectModel_Traditional_SHAFTAssertions.navigateToGoogleHomeAndAssertGoogleLogoIsDisplayed</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="skip">
+<td><span class="badge log skip-bg">Skip</span></td>
+<td>06:39:07 AM</td>
+<td>
+<a href="#" class="linked" test-id='14' id='14'>tests.gui.google.E_Search_PageObjectModel_Traditional_SHAFTAssertions.navigateToGoogleHomeAndAssertPageTitle</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="skip">
+<td><span class="badge log skip-bg">Skip</span></td>
+<td>06:39:07 AM</td>
+<td>
+<a href="#" class="linked" test-id='15' id='15'>tests.gui.google.E_Search_PageObjectModel_Traditional_SHAFTAssertions.searchForQueryAndAssertFirstResultTextIsCorrect</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="skip">
+<td><span class="badge log skip-bg">Skip</span></td>
+<td>06:39:07 AM</td>
+<td>
+<a href="#" class="linked" test-id='16' id='16'>tests.gui.google.D_Search_PageObjectModel_Traditional_DataDriven.navigateToGoogleHomeAndAssertGoogleLogoIsDisplayed</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="skip">
+<td><span class="badge log skip-bg">Skip</span></td>
+<td>06:39:07 AM</td>
+<td>
+<a href="#" class="linked" test-id='17' id='17'>tests.gui.google.D_Search_PageObjectModel_Traditional_DataDriven.navigateToGoogleHomeAndAssertPageTitle</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="skip">
+<td><span class="badge log skip-bg">Skip</span></td>
+<td>06:39:07 AM</td>
+<td>
+<a href="#" class="linked" test-id='18' id='18'>tests.gui.google.D_Search_PageObjectModel_Traditional_DataDriven.searchForQueryAndAssertFirstResultTextIsCorrect</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log badge-skip'>3</span>
+</span>
+<p class="name">org.openqa.selenium.SessionNotCreatedException</p>
+<p class="duration text-sm">3 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>org.openqa.selenium.SessionNotCreatedException</h4>
+<span status="skip" class='badge log badge-skip'>3 skipped</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="skip">
+<td><span class="badge log skip-bg">Skip</span></td>
+<td>06:39:31 AM</td>
+<td>
+<a href="#" class="linked" test-id='19' id='19'>tests.gui.google.A_Search_FlatTest_NativeSeleniumWebDriver.navigateToGoogleHomeAndAssertGoogleLogoIsDisplayed</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="skip">
+<td><span class="badge log skip-bg">Skip</span></td>
+<td>06:39:31 AM</td>
+<td>
+<a href="#" class="linked" test-id='20' id='20'>tests.gui.google.A_Search_FlatTest_NativeSeleniumWebDriver.navigateToGoogleHomeAndAssertPageTitle</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="skip">
+<td><span class="badge log skip-bg">Skip</span></td>
+<td>06:39:31 AM</td>
+<td>
+<a href="#" class="linked" test-id='21' id='21'>tests.gui.google.A_Search_FlatTest_NativeSeleniumWebDriver.searchForQueryAndAssertFirstResultTextIsCorrect</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="test-content scrollable">
+<div class="test-content-detail">
+<div class="detail-body"></div>
+</div>
+</div>
+</div>        </div>
+      </div>
+    </div>
+  </div>
+<script src="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@d6562a79075e061305ccfdb82f01e5e195e2d307/spark/js/spark-script.js"></script>
+<script type="text/javascript"></script></body>
+</html>
