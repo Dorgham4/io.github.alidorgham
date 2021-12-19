@@ -1,0 +1,6 @@
+[ReportManager] File Action [GetAbsolutePath] successfully performed. With the following test data [Relative Folder Path: "target/downloadedFiles/"]. @19-12-2021 18:37:17.0663 PM
+[ReportManager] Attempting to run remotely on: [Linux-64], [GoogleChrome], [http://localhost:4444/wd/hub], Headless Execution. @19-12-2021 18:37:17.0681 PM
+[ReportManager] Successfully Opened [GoogleChrome]. @19-12-2021 18:37:19.0815 PM
+[ReportManager] Target URL: [https://www.google.com/ncr], and after redirection: [https://www.google.com] @19-12-2021 18:37:19.0825 PM
+[ReportManager] Initial URL: [data:,] @19-12-2021 18:37:19.0984 PM
+[ReportManager] Browser Action [NavigateToURL] successfully performed. With the following test data [https://www.google.com/ncr]. @19-12-2021 18:37:21.0672 P
